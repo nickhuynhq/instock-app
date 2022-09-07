@@ -1,6 +1,9 @@
 import Warehouses from './pages/Warehouses/Warehouses';
 import Inventory from "./pages/Inventory/Inventory"
+import WarehouseDetails from './pages/WarehouseDetails/WarehouseDetails';
 import AddEditWarehouse from './pages/AddEditWarehouse/AddEditWarehouse';
+import InventoryDetails from './pages/InventoryDetails/InventoryDetails';
+import AddEditInventory from './pages/AddEditInventory/AddEditInventory';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
