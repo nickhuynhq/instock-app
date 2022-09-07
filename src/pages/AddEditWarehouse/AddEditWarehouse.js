@@ -4,16 +4,7 @@ import addURL from '../../assets/icons/close-24px.svg';
 import { Link } from 'react-router-dom';
 
 const AddEditWarehouse = ({title, buttonText}) => {
-  const getButtonText = () => {
-    if (buttonText === "Add Warehouse"){
-      return(
-        <>
-          <img src={addURL} alt="" className="warehouse__add-icon"/>
-          {buttonText}
-        </>
-      )
-    }
-  }
+  
   return (
     <>
       <section className="warehouse">
@@ -64,7 +55,7 @@ const AddEditWarehouse = ({title, buttonText}) => {
           </div>
           <div className="warehouse__btn-container">
             <Link className="warehouse__btn warehouse__btn--cancel" to="/">Cancel</Link>
-            <button className="warehouse__btn">{getButtonText()}</button>
+            <button className="warehouse__btn">{buttonText}</button>
           </div>
         </form>
       </section>
