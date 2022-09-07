@@ -35,12 +35,12 @@ const InventoryDetails = () => {
       </div>
       <div className="inventory-details__item-info">
         <div className="item-info__left">
-          <div className="item-info__left-inner-text">
+          <div className="item-info__left-description">
             <h4 className="inventory-details__label">Item Description:</h4>
             <p className="inventory-details__text">{inventoryItem.description}</p>
-            <h4 className="inventory-details__label">Category:</h4>
-            <p className="inventory-details__text">{inventoryItem.category}</p>
           </div>
+          <h4 className="inventory-details__label">Category:</h4>
+          <p className="inventory-details__text">{inventoryItem.category}</p>
           
         </div>
         <div className='item-info__stock'>
