@@ -4,13 +4,13 @@ import addURL from '../../assets/icons/close-24px.svg';
 import { Link } from 'react-router-dom';
 
 const AddEditWarehouse = ({title, buttonText}) => {
-  
+   
   return (
     <>
       <section className="warehouse">
         <div className="warehouse__title">
           <img src={iconURL} alt="" className="warehouse__img" />
-          <h1>{title}</h1>
+          <h1 className="warehouse__title-text">{title}</h1>
         </div>
         <form className="warehouse__form">
           <div className="warehouse__form-container">
