@@ -1,0 +1,91 @@
+//reset
+
+*, *::after, *::before{
+      box-sizing: border-box;
+}
+
+a{
+      text-decoration: none;
+      color: inherit;
+      padding: 0;
+}
+
+.warehouse{
+      width: 70vw;
+      margin: 0 auto;
+
+      &__title{
+            display: flex;
+            border-bottom: 1px solid #ccc;
+            padding: 0 2rem;
+      }
+
+      &__form{
+            display: flex;
+            flex-direction: column;
+      }
+
+      &__form-container{
+            display: flex;
+            margin: 1rem 0;
+      }
+
+      &__details{
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            border-right: 1px solid #ccc;
+            padding: 0 2rem;
+      }
+
+      &__contact{
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            padding: 0 2rem;
+      }
+
+      &__label{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1rem;
+      }
+
+      &__input{
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+      }
+
+      &__btn-container{
+            display: flex;
+            background-color: #eee;
+            width: 100%;
+            justify-content: flex-end;
+            padding: 1rem;
+
+      }
+
+      &__btn{
+            border: 1px solid #ccc;
+            padding: 0.5rem 1rem;
+            background-color: rgb(67, 88, 197);
+            color: white;
+            border-radius: 20px;
+            font-size: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 1rem;
+
+            &--cancel{
+                  background-color: white;
+                  color: black;
+            }
+      }
+
+      &__add-icon{
+            color: white;
+      }
+}
