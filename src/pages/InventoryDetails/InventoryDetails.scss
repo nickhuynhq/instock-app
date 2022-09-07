@@ -1,14 +1,6 @@
-@mixin tablet{
-    @media (min-width: 768px) {
-        @content;
-    }
-}
-
-@mixin desktop{
-    @media (min-width: 1280px) {
-        @content;
-    }
-}
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins";
 
 .inventory-details{
     display: flex;
@@ -18,7 +10,7 @@
     border-radius: 4px;
     color: #13182C;
     padding: 1rem 0;;
-    box-shadow: 1px 2px 4px #BDC5D5;
+    box-shadow: 1px 2px 4px $cloud;
 
     @include tablet{
         font-size: 12px;
@@ -28,7 +20,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border-bottom: .0625rem solid #BDC5D5;
+        border-bottom: .0625rem solid $cloud;
         padding: 0 1rem;
 
         @include tablet{
@@ -51,11 +43,11 @@
 
     &__edit-button{
         display: flex;
-        width: 1.25rem;
-        height: 1.25rem;
-        padding: 0.5rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        padding: 0.3rem;
         border-radius: 50%;
-        background-color: #2E66E5;
+        background-color: $instock-indigo;
 
         &-image{
             filter: brightness(0) invert(1);
@@ -106,7 +98,7 @@
 .item-info__left{
     @include tablet{
         width: 50%;
-        border-right: 1px solid #BDC5D5;
+        border-right: 1px solid $cloud;
     }
 
     &-description{

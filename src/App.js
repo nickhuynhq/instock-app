@@ -5,6 +5,7 @@ import AddEditWarehouse from './pages/AddEditWarehouse/AddEditWarehouse';
 import InventoryDetails from './pages/InventoryDetails/InventoryDetails';
 import AddEditInventory from './pages/AddEditInventory/AddEditInventory';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import "./App.scss";
 
 function App() {
   return (
