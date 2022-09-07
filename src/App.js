@@ -19,9 +19,8 @@ function App() {
         <Route path="/warehouses/:warehouseId/edit" element={<AddEditWarehouse />} />
         <Route path="/inventory/add" element={<AddEditInventory/>} />
         <Route path="/inventory/:inventoryId" element={<InventoryDetails />} />
-        <Route path="/inventory/inventoryId/edit" element={<AddEditInventory title="Edit Warehouse"/>} />
+        <Route path="/inventory/:inventoryId/edit" element={<AddEditInventory title="Edit Warehouse"/>} />
         <Route path="*" element={<h1>404</h1>} />
-
       </Routes>
     </BrowserRouter>
   </>
