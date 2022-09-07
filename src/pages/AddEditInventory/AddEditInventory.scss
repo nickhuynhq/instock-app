@@ -1,0 +1,36 @@
+.add-edit-inventory{
+    display:flex;
+    flex-direction: column;
+
+    &-top{
+        display: flex;
+        align-items: flex-start;
+        padding-top: 1rem;
+        
+    }
+    &__back-button{
+        width: 28px;
+        
+    }
+
+    &__title{
+        font-size: 28px;
+        margin-top:0;
+        margin-left: 0.5rem;
+    }
+
+    &__form{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.form__item-details{
+    display: flex;
+    flex-direction: column;
+}
+
+.form__item-availability{
+    display: flex;
+    flex-direction: column;
+}
