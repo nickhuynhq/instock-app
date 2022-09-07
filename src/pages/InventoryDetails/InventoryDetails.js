@@ -45,7 +45,7 @@ const InventoryDetails = () => {
             <h4 className="inventory-details__label">Status:</h4>
             <div className={inventoryItem.status === "In Stock" ? "inventory-details__stock" : "inventory-details__stock--out-of-stock"}>{inventoryItem.status}</div>
             <h4 className="inventory-details__label">Warehouse:</h4>
-            <p className="inventory-details__text">{inventoryItem.warehouse}</p>
+            <p className="inventory-details__text">{inventoryItem.warehouseName}</p>
           </div>
           <div className='item-info__stock-right'>
             <h4 className="inventory-details__label">Quantity:</h4>

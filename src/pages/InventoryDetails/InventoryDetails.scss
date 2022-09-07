@@ -1,5 +1,4 @@
 
-
 .inventory-details{
     display: flex;
     flex-direction: column;
@@ -7,6 +6,7 @@
     font-size: 11px;
     border-radius: 4px;
     color: #13182C;
+    padding: 1rem 0;;
     box-shadow: 1px 2px 4px #BDC5D5;
 
     &-top{
