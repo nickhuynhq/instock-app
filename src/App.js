@@ -2,7 +2,11 @@ import Warehouses from "./pages/Warehouses/Warehouses";
 import Inventory from "./pages/Inventory/Inventory";
 import AddEditWarehouse from "./pages/AddEditWarehouse/AddEditWarehouse";
 import Header from "./components/Header/Header";
+import WarehouseDetails from "./pages/WarehouseDetails/WarehouseDetails";
+import AddEditInventory from "./pages/AddEditInventory/AddEditInventory";
+import InventoryDetails from "./pages/InventoryDetails/InventoryDetails";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.scss";
 
 function App() {
   return (
