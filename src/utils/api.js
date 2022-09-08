@@ -17,3 +17,6 @@ export const fetchWarehouses = () => {
     return axios.get(`${BASE_URL}/warehouse/`);
 }
 
+export const addNewWarehouse = (body) => {
+    return axios.post(`${BASE_URL}/warehouse/add`, body);
+}

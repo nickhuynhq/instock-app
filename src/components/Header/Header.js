@@ -7,8 +7,8 @@ function Header() {
       <nav className="header">
         <img className="header__logo" src={logo} alt="instock-logo" />
         <div className="header__buttons">
-          <button className="header__btn-warehouses">Warehouses</button>
-          <button className="header__btn-inventory">Inventory</button>
+          <button className="header__btn">Warehouses</button>
+          <button className="header__btn">Inventory</button>
         </div>
       </nav>
     </header>

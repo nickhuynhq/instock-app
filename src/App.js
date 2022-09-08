@@ -30,7 +30,10 @@ function App() {
         <Route path="/warehouses/:warehouseId" element={<WarehouseDetails />} />
         <Route
           path="/warehouses/:warehouseId/edit"
-          element={<AddEditWarehouse />}
+          element={<AddEditWarehouse 
+          title="Edit Warehouse"
+          buttonText="Save"
+          />}
         />
         <Route 
           path="/inventory/add" 
