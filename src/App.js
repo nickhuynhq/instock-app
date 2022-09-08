@@ -29,13 +29,16 @@ function App() {
         <Route path="/warehouses/:warehouseId" element={<WarehouseDetails />} />
         <Route
           path="/warehouses/:warehouseId/edit"
-          element={<AddEditWarehouse />}
+          element={<AddEditWarehouse 
+          title="Edit Warehouse"
+          buttonText="Save"
+          />}
         />
         <Route path="/inventory/add" element={<AddEditInventory />} />
         <Route path="/inventory/:inventoryId" element={<InventoryDetails />} />
         <Route
           path="/inventory/:inventoryId/edit"
-          element={<AddEditInventory title="Edit Warehouse" />}
+          element={<AddEditInventory />}
         />
         <Route path="*" element={<h1>404</h1>} />
       </Routes>

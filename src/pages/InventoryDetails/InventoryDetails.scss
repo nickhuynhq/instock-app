@@ -1,7 +1,7 @@
 @use "../../styles/partials/breakpoints" as *;
 @use "../../styles/partials/colors" as *;
 @use "../../styles/partials/mixins";
-
+ 
 .inventory-details{
     display: flex;
     flex-direction: column;
