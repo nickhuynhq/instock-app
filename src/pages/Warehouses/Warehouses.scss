@@ -1,0 +1,15 @@
+.item-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.item__subhead {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.items__header {
+    display: flex;
+    flex-direction: column;
+}
