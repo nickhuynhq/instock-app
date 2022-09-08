@@ -18,6 +18,10 @@ const Warehouses = () => {
   if (!items) {
     return <h1>Loading . . .</h1>
   }
+
+  const handleCardClick = () => {
+    alert("hello")
+  }
   
   return (
     <main className="items">
@@ -32,6 +36,7 @@ const Warehouses = () => {
       {items.map((item)=>{
         return (
           <ItemCard
+            onClick={handleCardClick}
             key={item.id}
             id={item.id}
             name={item.name}
