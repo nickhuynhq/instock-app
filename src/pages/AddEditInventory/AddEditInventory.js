@@ -2,6 +2,7 @@ import React from 'react'
 import ArrowBack from '../../assets/icons/arrow_back-24px.svg'
 import {useState, useEffect} from "react";
 import { v4 as uuidv4 } from 'uuid';
+import {useNavigate} from 'react-router-dom';
 import { fetchInventory, fetchWarehouses, addInventoryItem } from '../../utils/api';
 import "./AddEditInventory.scss"
 
@@ -12,6 +13,7 @@ const AddEditInventory = () => {
   const [warehousesData, setWarehousesData] = useState(null)
   const [warehouseValue, setWarehouseValue] = useState("default");
   const [itemAvailability, setItemAvailability] = useState("in-stock");
+  let navigate = useNavigate(); 
  
   // Handle category change on Select
   const handleCategoryChange = (e) => {
@@ -26,6 +28,10 @@ const AddEditInventory = () => {
   // Handle Item Availability Status Select
   const handleStatusSelect = (e) => {
     setItemAvailability(e.target.value)
+  }
+
+  const handleCancel = () => {
+    navigate("/inventory")
   }
 
   const handleAddInventoryItem = (event) => {
@@ -90,7 +96,7 @@ const AddEditInventory = () => {
   return (
     <div className="add-edit-inventory">
       <div className="add-edit-inventory-top">
-        <img className="add-edit-inventory__back-button" src={ArrowBack} alt="Arrow Back"/>
+        <img className="add-edit-inventory__back-button" src={ArrowBack} onClick={handleCancel} alt="Arrow Back"/>
         <h1 className="add-edit-inventory__title">Add New Inventory Item</h1>
       </div>
       <form className="add-edit-inventory__form" onSubmit={handleAddInventoryItem}>
@@ -134,7 +140,7 @@ const AddEditInventory = () => {
         </div>
         
         <div className="form__bottom">
-          <button className='form__button--cancel'>Cancel</button>
+          <button className='form__button--cancel' onClick={handleCancel}>Cancel</button>
           <button className='form__button' type='submit'>+ Add Item</button>
         </div>
         
