@@ -25,6 +25,7 @@ const WareHouseDetails = () => {
         <h1 className='warehouse__name'>{warehouse.name}</h1>
         <div className='warehouse__details'>
           <span className='warehouse__label'>Warehouse Address</span>
+          <span className='warehouse__address'>{warehouse.address}</span>
         </div>
       </section>
     </main>
