@@ -48,6 +48,10 @@
     &__label{
         margin-top: 1rem;
         margin-bottom: 0;
+
+        &--hidden{
+            display:none;
+        }
     }
 
     &__item-details{
@@ -68,6 +72,10 @@
         padding: 0.5rem;
         margin-top: 0.5rem;
         background-color: $white;
+        
+        &--hidden{
+            display:none;
+        }
     }
 
     &__textarea{

@@ -2,25 +2,59 @@ import React from 'react'
 import ArrowBack from '../../assets/icons/arrow_back-24px.svg'
 import {useState, useEffect} from "react";
 import { v4 as uuidv4 } from 'uuid';
+import { fetchInventory, fetchWarehouses, addInventoryItem } from '../../utils/api';
 import "./AddEditInventory.scss"
-import { fetchInventory, fetchWarehouses } from '../../utils/api';
 
 const AddEditInventory = () => {
 
   const [inventoryData, setInventoryData] = useState(null)
   const [categoryValue, setCategoryValue] = useState("default");
   const [warehousesData, setWarehousesData] = useState(null)
-  const [warehousesValue, setWarehousesValue] = useState("default");
+  const [warehouseValue, setWarehouseValue] = useState("default");
+  const [itemAvailability, setItemAvailability] = useState("in-stock");
  
   // Handle category change on Select
   const handleCategoryChange = (e) => {
-    setCategoryValue(e.target.categoryValue);
+    setCategoryValue(e.target.value);
   };
 
    // Handle warehouse change on Select
    const handleWarehouseChange = (e) => {
-    setWarehousesValue(e.target.warehousesValue);
+    setWarehouseValue(e.target.value);
   };
+
+  // Handle Item Availability Status Select
+  const handleStatusSelect = (e) => {
+    setItemAvailability(e.target.value)
+  }
+
+  const handleAddInventoryItem = (event) => {
+    event.preventDefault();
+    const warehouse = event.target.warehouse.value;
+    const name = event.target.name.value.trim();
+    const description = event.target.description.value.trim();
+    const category = event.target.category.value;
+    const status = event.target.status.value;
+    const quantity = event.target.quantity.value;
+
+    const item = {
+      "warehouseName": warehouse,
+      "itemName": name,
+      "description": description,
+      "category": category,
+      "status": status,
+      "quantity": quantity
+    }
+
+    if (name && description) {
+      window.scrollTo(0,0);
+      addInventoryItem(item).then(()=>{
+        alert("Item has been added")
+      });
+    } else {
+      alert("Item has not been uploaded")
+    }
+  }
 
   useEffect(() => {
     fetchInventory()
@@ -35,7 +69,7 @@ const AddEditInventory = () => {
         console.log(error);
       });
 
-  }, [])
+  }, [itemAvailability])
 
   if (!inventoryData || !warehousesData) {
     return <p>Loading</p>;
@@ -53,14 +87,13 @@ const AddEditInventory = () => {
   })
   let filteredWarehousesArray = [...new Set(warehousesArray)];
   
-
   return (
     <div className="add-edit-inventory">
       <div className="add-edit-inventory-top">
         <img className="add-edit-inventory__back-button" src={ArrowBack} alt="Arrow Back"/>
         <h1 className="add-edit-inventory__title">Add New Inventory Item</h1>
       </div>
-      <form className="add-edit-inventory__form">
+      <form className="add-edit-inventory__form" onSubmit={handleAddInventoryItem}>
         <div className='form__main'>
           <div className="form__item-details">
             <h2 className="form__title">Item Details</h2>
@@ -82,19 +115,19 @@ const AddEditInventory = () => {
             <h2 className="form__title">Item Availability</h2>
             <p className="form__label">Status</p>
             <div>
-              <input type="radio" id="in-stock" name="status" value="in-stock" defaultChecked/>
+              <input type="radio" id="in-stock" name="status" value="in-stock" defaultChecked onChange={handleStatusSelect}/>
               <label htmlFor="in-stock">In stock</label>
             </div>
             <div>
-              <input type="radio" id="out-of-stock" name="status" value="out-of-stock"/>
+              <input type="radio" id="out-of-stock" name="status" value="out-of-stock" onChange={handleStatusSelect}/>
               <label htmlFor="out-of-stock">Out of stock</label>
             </div>
             
-            <label className="form__label" htmlFor="quantity">Quantity</label>
-            <input id="quantity" name="quantity" className="form__input" type="number" placeholder='0'/>
+            <label className={itemAvailability==="in-stock" ? "form__label" : "form__label--hidden" } htmlFor="quantity" >Quantity</label>
+            <input id="quantity" name="quantity" className={itemAvailability==="in-stock" ? "form__input" : "form__input--hidden" } type="number" defaultValue={0}/>
 
             <label className="form__label" htmlFor="warehouse">Warehouse</label>
-            <select id="warehouse" name="warehouse" className="form__input" defaultValue={categoryValue} onChange={handleWarehouseChange}>
+            <select id="warehouse" name="warehouse" className="form__input" defaultValue={warehouseValue} onChange={handleWarehouseChange}>
               <option value="default" disabled>Please select</option>
               {filteredWarehousesArray.map((warehouse) => (
                 <option key={uuidv4()} value={warehouse}>{warehouse}</option>
