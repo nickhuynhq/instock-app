@@ -15,8 +15,19 @@ const WareHouseDetails = () => {
   },[warehouseId])
 
 
+  if (warehouse === "") {
+    return <h1>Loading . . .</h1>
+  }
+  
   return (
-    <div>{warehouse.name}</div>
+    <main className="details">
+      <section className='warehouse'>
+        <h1 className='warehouse__name'>{warehouse.name}</h1>
+        <div className='warehouse__details'>
+          <span className='warehouse__label'>Warehouse Address</span>
+        </div>
+      </section>
+    </main>
   )
 }
 
