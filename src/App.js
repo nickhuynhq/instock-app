@@ -1,5 +1,6 @@
 import Warehouses from "./pages/Warehouses/Warehouses";
 import Inventory from "./pages/Inventory/Inventory";
+import Footer from "./components/Footer/Footer";
 import WarehouseDetails from "./pages/WarehouseDetails/WarehouseDetails";
 import AddEditWarehouse from "./pages/AddEditWarehouse/AddEditWarehouse";
 import InventoryDetails from "./pages/InventoryDetails/InventoryDetails";
@@ -38,6 +39,7 @@ function App() {
         />
         <Route path="*" element={<h1>404</h1>} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

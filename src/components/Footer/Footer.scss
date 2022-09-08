@@ -1,0 +1,24 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/breakpoints" as *;
+
+
+.footer{
+    text-align: center;
+    font-size: .6875rem;
+    color: $slate;
+    line-height: 1rem;
+    padding-top: 109.4375rem;
+
+    @include tablet{
+        font-size: 12px;
+        line-height: 18px;
+        padding-top: 60.375rem;
+
+    }
+
+    @include desktop{
+        padding-top: 53.6875rem;
+    }
+    
+
+}
