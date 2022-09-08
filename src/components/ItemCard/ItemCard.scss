@@ -1,5 +1,8 @@
 .card {
-    margin: 1rem;
+
+    &__holder {
+        margin: 1rem;
+    }
 
     &__info {
         display: flex;
