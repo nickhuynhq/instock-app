@@ -5,10 +5,12 @@
 .add-edit-inventory{
     display:flex;
     flex-direction: column;
-    margin-top: -2.5rem;
+    margin-top: -5rem;
     margin-left: 1rem;
     margin-right: 1rem;
     background-color: $white;
+    border-radius: 4px;
+    box-shadow: 1px 2px 4px $cloud;
 
     &-top{
         display: flex;
@@ -16,9 +18,7 @@
         padding: 0 1rem;
         padding-top: 1rem;
         border-bottom: 1px solid $cloud;
-        
     }
-
 
     &__back-button{
         margin-top: 0.5rem;
@@ -41,6 +41,16 @@
 
 .form{
 
+    &__main{
+        display: flex;
+        flex-direction: column;
+
+        @include tablet {
+            flex-direction: row;
+            padding-top: 1rem;
+        }
+    }
+
     &__title{
         margin-bottom: 0;
     }
@@ -50,7 +60,7 @@
         margin-bottom: 0;
 
         &--hidden{
-            display:none;
+            display: none;
         }
     }
 
@@ -58,12 +68,15 @@
         display: flex;
         flex-direction: column;
         padding: 0 1rem;
+        width: 50%;
     }
 
     &__item-availability{
-        display: flex;
-        flex-direction: column;
-        padding: 0 1rem;
+        @extend .form__item-details;
+
+        @include tablet {
+            border-left: 1px solid $cloud;
+        }
     }
 
     &__input{
@@ -72,7 +85,7 @@
         padding: 0.5rem;
         margin-top: 0.5rem;
         background-color: $white;
-        
+
         &--hidden{
             display:none;
         }
@@ -83,6 +96,17 @@
         font-family: 'Titillium Web', sans-serif;
         height: 6rem;
         resize: none;  
+    }
+
+    &__bottom{
+        display: flex;
+        margin-top: 2rem;
+        padding: 1rem 1rem;
+        background-color: $light-grey;
+
+        @include tablet{
+            justify-content: right;
+        }
     }
 
     &__button{
@@ -97,19 +121,19 @@
         align-items: center;
         width: 100%;
 
+        @include tablet{
+            max-width: 120px;
+        }
+
         &--cancel{
             @extend .form__button;
             background-color: $white;
             color: $instock-black;
             margin-right: 1rem;
+
+            @include tablet{
+                width: max-content;
+            }
         }
     }
-
-    &__bottom{
-        display: flex;
-        margin-top: 2rem;
-        padding: 1rem 1rem;
-        background-color: $light-grey;
-    }
-
 }

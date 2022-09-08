@@ -104,11 +104,9 @@ const AddEditInventory = () => {
             <label className="form__label" htmlFor="category">Category</label>
             <select id="category" name="category" className="form__input" defaultValue={categoryValue} onChange={handleCategoryChange}>
               <option value="default" disabled>Please Select</option>
-
-              {filteredCategoryArray.map((item) => (
-                <option key={uuidv4()} value={item}>{item}</option>
-              ))}
-              
+                {filteredCategoryArray.map((item) => (
+                  <option key={uuidv4()} value={item}>{item}</option>
+                ))}
             </select>
           </div>
           <div className="form__item-availability">
@@ -122,16 +120,15 @@ const AddEditInventory = () => {
               <input type="radio" id="out-of-stock" name="status" value="out-of-stock" onChange={handleStatusSelect}/>
               <label htmlFor="out-of-stock">Out of stock</label>
             </div>
-            
             <label className={itemAvailability==="in-stock" ? "form__label" : "form__label--hidden" } htmlFor="quantity" >Quantity</label>
             <input id="quantity" name="quantity" className={itemAvailability==="in-stock" ? "form__input" : "form__input--hidden" } type="number" defaultValue={0}/>
 
             <label className="form__label" htmlFor="warehouse">Warehouse</label>
             <select id="warehouse" name="warehouse" className="form__input" defaultValue={warehouseValue} onChange={handleWarehouseChange}>
               <option value="default" disabled>Please select</option>
-              {filteredWarehousesArray.map((warehouse) => (
-                <option key={uuidv4()} value={warehouse}>{warehouse}</option>
-              ))}
+                {filteredWarehousesArray.map((warehouse) => (
+                  <option key={uuidv4()} value={warehouse}>{warehouse}</option>
+                ))}
             </select>
           </div>
         </div>
