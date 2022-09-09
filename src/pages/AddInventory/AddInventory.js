@@ -4,9 +4,9 @@ import {useState, useEffect} from "react";
 import { v4 as uuidv4 } from 'uuid';
 import {useNavigate} from 'react-router-dom';
 import { fetchInventory, fetchWarehouses, addInventoryItem } from '../../utils/api';
-import "./AddEditInventory.scss"
+import "./AddInventory.scss"
 
-const AddEditInventory = ({title, buttonText}) => {
+const AddInventory = ({title, buttonText}) => {
 
   const [inventoryData, setInventoryData] = useState(null)
   const [categoryValue, setCategoryValue] = useState("default");
@@ -150,4 +150,4 @@ const AddEditInventory = ({title, buttonText}) => {
   )
 }
 
-export default AddEditInventory
+export default AddInventory

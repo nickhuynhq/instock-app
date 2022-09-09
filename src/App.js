@@ -5,11 +5,12 @@ import Footer from "./components/Footer/Footer";
 import WarehouseDetails from "./pages/WarehouseDetails/WarehouseDetails";
 import AddEditWarehouse from "./pages/AddEditWarehouse/AddEditWarehouse";
 import InventoryDetails from "./pages/InventoryDetails/InventoryDetails";
-import AddEditInventory from "./pages/AddEditInventory/AddEditInventory";
+import AddInventory from "./pages/AddInventory/AddInventory";
+import EditInventory from "./pages/EditInventory/EditInventory";
 import Header from "./components/Header/Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.scss";
-import EditInventory from "./pages/EditInventory/EditInventory";
+
 
 function App() {
   return (
@@ -38,12 +39,7 @@ function App() {
         />
         <Route 
           path="/inventory/add" 
-          element={
-            <AddEditInventory 
-              title="Add New Inventory Item"
-              buttonText="+ Add Item"
-            />
-          } 
+          element={<AddInventory />} 
         />
         <Route path="/inventory/:inventoryId" element={<InventoryDetails />} />
         <Route
