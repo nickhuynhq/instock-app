@@ -3,7 +3,23 @@
 
 
 .inventory{
-   
+    margin-top: -5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background-color: $white;
+    border-radius: 4px;
+    box-shadow: 1px 2px 4px $cloud;
+
+    &__header{
+        @include tablet{
+            display: flex;
+            gap: 13rem;
+        }
+
+        @include desktop{
+            gap: 46rem;
+        }
+    }
 
     &__title{
         font-weight: 600;
@@ -28,7 +44,7 @@
 
     &__search{
         height: 2.25rem;
-        width: 15.9375rem;
+        width: 15.3125rem;
         border-radius: 20px;
         margin-left: 1.5rem;
         border: 1px solid $cloud;
@@ -36,6 +52,11 @@
         background-image: url(../../assets/icons/search-24px.svg);
         background-repeat: no-repeat;
         background-position: 95% 50%;
+
+        @include tablet{
+            width: 11.5625rem;
+            height: 2.375rem;
+        }
     }
     &__search::placeholder{
         padding-left: 1rem;
@@ -45,15 +66,61 @@
     
     &__add{
         height: 2.25rem;
-        width: 15.9375rem;
+        width: 15.3125rem;
         border-radius: 20px;
         margin-left: 1.5rem;
         border: none;
         background-color: $instock-indigo;
         color: $white;
         font-family: 'Titillium Web', sans-serif; 
-        margin-bottom: 1rem; 
+        margin-bottom: 1.5rem; 
+        @include tablet{
+            width: 8rem;
+            height: 2.375rem;
+        }
         
+    }
+
+    &__container{
+        display: none;
+
+        @include tablet{
+            display: initial;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-transform: uppercase;
+            color: $slate;
+            width: 100%;
+            padding: 0 2rem;
+            background-color: $light-grey;
+    
+            
+        }
+
+        &--box{
+            @include tablet{
+                display: flex;
+                align-items: center;
+                width: 15%;
+                font-size: .75rem;
+                white-space: nowrap;
+                
+            }  
+        }
+
+        &--icon{
+            @include tablet{
+                width: 1rem;
+                height: 1rem;
+            }
+        }
+
+        &--action{
+            @include tablet{
+                font-size: .75rem;
+            }
+        }
     }
 
 }
@@ -62,5 +129,40 @@
     display: flex;
     flex-direction: column;
 
+    @include tablet{
+        flex-direction: row;
+        margin-top: 3.25rem;
+    }
+
 }
+
+.overlay {
+    background-color: black;
+    position: fixed;
+    z-index: 2;
+    height: 110vh;
+    width: 160vw;
+    opacity: 50%;
+    margin-top: -10rem;
+    left: -10rem;
+    
+
+    &__box {
+        background-color: white;
+        position: fixed;
+        z-index: 3;
+        height: 110vh;
+        width: 100vw;
+        opacity: 100%;
+        margin-top:-10rem;
+        overflow: hidden;
+    }
+
+    &__text {
+        z-index: 4;
+        position: fixed;
+        overflow: hidden;
+    }
+}
+
 

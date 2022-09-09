@@ -4,11 +4,14 @@ import Inventory from "./pages/Inventory/Inventory";
 import Footer from "./components/Footer/Footer";
 import WarehouseDetails from "./pages/WarehouseDetails/WarehouseDetails";
 import AddEditWarehouse from "./pages/AddEditWarehouse/AddEditWarehouse";
+import EditWarehouse from "./pages/EditWarehouse/EditWarehouse";
 import InventoryDetails from "./pages/InventoryDetails/InventoryDetails";
-import AddEditInventory from "./pages/AddEditInventory/AddEditInventory";
+import AddInventory from "./pages/AddInventory/AddInventory";
+import EditInventory from "./pages/EditInventory/EditInventory";
 import Header from "./components/Header/Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.scss";
+
 
 function App() {
   return (
@@ -28,31 +31,18 @@ function App() {
           }
         />
         <Route path="/warehouses/:warehouseId" element={<WarehouseDetails />} />
-        <Route
-          path="/warehouses/:warehouseId/edit"
-          element={<AddEditWarehouse 
-          title="Edit Warehouse"
-          buttonText="Save"
-          />}
+        <Route path="/warehouses/:warehouseId/edit" element={<EditWarehouse />}
         />
         <Route 
           path="/inventory/add" 
-          element={
-            <AddEditInventory 
-              title="Add New Inventory Item"
-              buttonText="+ Add Item"
-            />
-          } 
+          element={<AddInventory />} 
         />
         <Route path="/inventory/:inventoryId" element={<InventoryDetails />} />
         <Route
           path="/inventory/:inventoryId/edit"
-          element={
-            <AddEditInventory 
-              title="Edit Inventory Item"
-              buttonText="Save"
-            />}
+          element={<EditInventory />}
         />
+        <Route path="/warehouses/:warehouseid/delete" element={<Warehouses />} />
         <Route path="*" element={<h1>404</h1>} />
       </Routes>
       <Footer />
