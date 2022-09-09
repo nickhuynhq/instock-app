@@ -9,3 +9,7 @@ export const fetchInventoryById = (inventoryId) => {
 export const addNewWarehouse = (body) => {
     return axios.post(`${BASE_URL}/warehouse/add`, body);
 }
+
+export const editWarehouse = (body, warehouseId) => {
+    return axios.post(`${BASE_URL}/warehouse/${warehouseId}/edit`, body);
+}

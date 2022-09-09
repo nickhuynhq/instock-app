@@ -1,30 +1,41 @@
 import './AddEditWarehouse.scss';
 import iconURL from '../../assets/icons/arrow_back-24px.svg';
 import { Link } from 'react-router-dom';
-import { addNewWarehouse } from '../../utils/api';
+import { addNewWarehouse, editWarehouse } from '../../utils/api';
 import { useEffect } from 'react';
 
 const AddEditWarehouse = ({title, buttonText}) => {
    const handleSubmit = (event) => {
-    event.preventDefault();
+    console.log(window.location.pathname)
 
+
+    event.preventDefault();
     const warehouse = {
-      "name": event.target.name.value,
-      "address": event.target.address.value,
-      "city": event.target.city.value,
-      "country": event.target.country.value,
-      "contact": {
-        "name": event.target.contactName.value,
-        "position": event.target.position.value,
-        "phone": `+1 ${event.target.phoneNumber.value}`,
-        "email": event.target.email.value
+      name: event.target.name.value,
+      address: event.target.address.value,
+      city: event.target.city.value,
+      country: event.target.country.value,
+      contact: {
+        name: event.target.contactName.value,
+        position: event.target.position.value,
+        phone: `+1 ${event.target.phoneNumber.value}`,
+        email: event.target.email.value
       }
     }
 
-    addNewWarehouse(warehouse)
-    .then(() => {
-      alert("Warehouse uploaded!");
-    });
+    if(window.location.pathname.includes("add")){
+      addNewWarehouse(warehouse)
+      .then(() => {
+        alert("Warehouse uploaded!");
+      });
+  
+    } else if (window.location.pathname.includes("edit")){
+      const warehouseId = window.location.pathname.split("/")[2];
+      editWarehouse(warehouse, warehouseId)
+      .then(()=>{
+        alert("Warehouse edited!");
+      })
+    }
 
     event.target.reset();
    }
