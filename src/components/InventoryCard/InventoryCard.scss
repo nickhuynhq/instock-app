@@ -78,7 +78,7 @@
         }
 
 
-        &--green{
+        &--in-stock{
             padding-bottom: 1.25rem;
             color: $green;
             font-size: .6875rem;
@@ -91,6 +91,11 @@
             border-radius: 20px;
             margin-bottom: 1rem;
             
+        }
+
+        &--out-of-stock{
+            color: rgba(201, 69, 21, 1);
+            background-color: rgba(201, 69, 21, 0.07);
         }
     }
 }

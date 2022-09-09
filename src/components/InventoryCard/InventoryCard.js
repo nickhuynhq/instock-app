@@ -21,8 +21,6 @@ const InventoryCard = ({
     navigate(`/inventory/${id}/delete`);
   };
 
-  // const isStock
-
   return (
     <div className="box">
       <Link to={`/inventory/${id}`}>
@@ -47,7 +45,13 @@ const InventoryCard = ({
           <div className="box__info-right">
             <div className="box__info-wrap">
               <span className="box__info-wrap--label">Status</span>
-              <span className="box__info-wrap--span box__info-wrap--green">
+              <span
+                className={
+                  status === "In Stock"
+                    ? "box__info-wrap--in-stock"
+                    : "box__info-wrap--out-of-stock"
+                }
+              >
                 {status}
               </span>
             </div>
