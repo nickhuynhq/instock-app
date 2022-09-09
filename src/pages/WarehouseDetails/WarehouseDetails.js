@@ -17,12 +17,6 @@ const WareHouseDetails = () => {
       });
   }, [warehouseId]);
 
-  // useEffect(() => {
-  //   axios.get("http://localhost:8081/").then((response) => {
-  //     setDetails(response.data);
-  //   });
-  // }, [warehouseId]);
-
   if (warehouse === "") {
     return <h1>Loading . . .</h1>;
   }
@@ -35,20 +29,6 @@ const WareHouseDetails = () => {
           <span className="warehouse__label">Warehouse Address</span>
           <span className="warehouse__address">{warehouse.address}</span>
         </div>
-        {/* <div className="inventory-list">
-          {details.map((detail) => {
-            return (
-              <InventoryCard
-                key={detail.id}
-                id={detail.id}
-                itemName={detail.itemName}
-                category={detail.category}
-                status={detail.status}
-                quantity={detail.quantity}
-              />
-            );
-          })}
-        </div> */}
       </section>
     </main>
   );
