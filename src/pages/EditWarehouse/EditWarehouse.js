@@ -1,10 +1,10 @@
-import './AddEditWarehouse.scss';
+import './EditWarehouse.scss';
 import iconURL from '../../assets/icons/arrow_back-24px.svg';
-import { Link } from 'react-router-dom';
-import { addNewWarehouse, editWarehouse } from '../../utils/api';
-import { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { editWarehouse } from '../../utils/api';
 
-const AddEditWarehouse = ({title, buttonText}) => {
+const EditWarehouse = () => {
+      const {warehouseId} = useParams();
    const handleSubmit = (event) => {
 
     event.preventDefault();
@@ -21,28 +21,20 @@ const AddEditWarehouse = ({title, buttonText}) => {
       }
     }
 
-    if(window.location.pathname.includes("add")){
-      addNewWarehouse(warehouse)
-      .then(() => {
-        alert("Warehouse uploaded!");
-      });
-  
-    } else if (window.location.pathname.includes("edit")){
-      const warehouseId = window.location.pathname.split("/")[2];
       editWarehouse(warehouse, warehouseId)
       .then(()=>{
         alert("Warehouse edited!");
       })
-    }
 
     event.target.reset();
    }
+
   return (
     <>
       <section className="warehouse">
         <div className="warehouse__title">
           <img src={iconURL} alt="" className="warehouse__img" />
-          <h1 className="warehouse__title-text">{title}</h1>
+          <h1 className="warehouse__title-text">Edit Warehouse</h1>
         </div>
         <form className="warehouse__form" onSubmit={handleSubmit}>
           <div className="warehouse__form-container">
@@ -79,7 +71,7 @@ const AddEditWarehouse = ({title, buttonText}) => {
           </div>
           <div className="warehouse__btn-container">
             <Link className="warehouse__btn warehouse__btn--cancel" to="/">Cancel</Link>
-            <button className="warehouse__btn">{buttonText}</button>
+            <button className="warehouse__btn">Save</button>
           </div>
         </form>
       </section>
@@ -87,4 +79,4 @@ const AddEditWarehouse = ({title, buttonText}) => {
   )
 }
 
-export default AddEditWarehouse
+export default EditWarehouse
