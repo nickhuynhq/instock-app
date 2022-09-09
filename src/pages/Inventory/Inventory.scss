@@ -3,12 +3,16 @@
 
 
 .inventory{
-    margin-top: -5rem;
+    margin-top: 3rem;
     margin-left: 1rem;
     margin-right: 1rem;
     background-color: $white;
     border-radius: 4px;
     box-shadow: 1px 2px 4px $cloud;
+
+    @include tablet{
+        margin-top: -5rem;
+    }
 
     &__header{
         @include tablet{
@@ -165,4 +169,18 @@
     }
 }
 
+
+.category{
+    display: none;
+
+    @include tablet{
+        display: inherit;
+        display: flex;
+    }
+
+    &__label{
+        display: flex;
+        flex-direction: row;
+    }
+}
 
