@@ -64,7 +64,7 @@ const Warehouses = () => {
         <div className='overlay__box'></div>
       </>
   }
-
+ 
   return (
     <>
       {overlay}

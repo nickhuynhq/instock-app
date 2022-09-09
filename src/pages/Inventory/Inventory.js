@@ -9,6 +9,7 @@ import { useParams, useNavigate } from "react-router-dom";
 const Inventory = () => {
   const [inventories, setInventories] = useState(null);
   const { inventoryid } = useParams();
+  console.log("beginning",inventoryid);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,7 +20,7 @@ const Inventory = () => {
 
   if (!inventories) {
     return <h1>Loading...</h1>;
-  }
+  } 
 
   const handleCancelClick = () => {
     navigate("/inventory");
@@ -29,7 +30,7 @@ const Inventory = () => {
     axios
       .delete(`http://localhost:8081/inventory/${inventoryid}`)
       .then((response) => {
-        navigate("/warehouses");
+        navigate("/inventory");
         return axios.get("http://localhost:8081/inventory");
       })
       .then((response) => {
@@ -41,7 +42,7 @@ const Inventory = () => {
 
   if (inventoryid !== undefined) {
     const item = inventories.find((item) => item.id === inventoryid);
-    console.log(item);
+    console.log("overlay",inventoryid);
     overlay = (
       <>
         <div className="overlay"></div>
@@ -85,6 +86,7 @@ const Inventory = () => {
         <div className="inventory-card">
           {inventories.map((inventory) => {
             return (
+              
               <InventoryCard
                 key={inventory.id}
                 id={inventory.id}
@@ -94,6 +96,8 @@ const Inventory = () => {
                 quantity={inventory.quantity}
                 warehouseName={inventory.warehouseName}
               />
+
+              
             );
           })}
         </div>
