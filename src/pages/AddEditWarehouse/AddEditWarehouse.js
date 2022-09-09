@@ -6,8 +6,6 @@ import { useEffect } from 'react';
 
 const AddEditWarehouse = ({title, buttonText}) => {
    const handleSubmit = (event) => {
-    console.log(window.location.pathname)
-
 
     event.preventDefault();
     const warehouse = {
