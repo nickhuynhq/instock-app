@@ -3,27 +3,26 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import InventoryCard from "../../components/InventoryCard/InventoryCard";
 import axios from "axios";
+import { fetchInventory } from "../../utils/api";
 
 const WareHouseDetails = () => {
   const { warehouseId } = useParams();
   const [warehouse, setWarehouse] = useState("");
-  const [details, setDetails] = useState("");
+  const [inventories, setInventories] = useState("");
 
   useEffect(() => {
     axios
       .get(`http://localhost:8081/warehouse/${warehouseId}`)
       .then((response) => {
         setWarehouse(response.data);
+        return fetchInventory();
+      })
+      .then((response) => {
+        setInventories(response.data);
       });
   }, [warehouseId]);
 
-  // useEffect(() => {
-  //   axios.get("http://localhost:8081/").then((response) => {
-  //     setDetails(response.data);
-  //   });
-  // }, [warehouseId]);
-
-  if (warehouse === "") {
+  if (warehouse === "" || inventories === "") {
     return <h1>Loading . . .</h1>;
   }
 
@@ -35,20 +34,22 @@ const WareHouseDetails = () => {
           <span className="warehouse__label">Warehouse Address</span>
           <span className="warehouse__address">{warehouse.address}</span>
         </div>
-        {/* <div className="inventory-list">
-          {details.map((detail) => {
-            return (
-              <InventoryCard
-                key={detail.id}
-                id={detail.id}
-                itemName={detail.itemName}
-                category={detail.category}
-                status={detail.status}
-                quantity={detail.quantity}
-              />
-            );
+        <div className="inventory-list">
+          {inventories.map((inventory) => {
+            if (warehouseId === inventory.warehouseID) {
+              return (
+                <InventoryCard
+                  key={inventory.id}
+                  id={inventory.id}
+                  itemName={inventory.itemName}
+                  category={inventory.category}
+                  status={inventory.status}
+                  quantity={inventory.quantity}
+                />
+              );
+            }
           })}
-        </div> */}
+        </div>
       </section>
     </main>
   );
