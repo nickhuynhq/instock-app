@@ -1,13 +1,13 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import InventoryCard from "../../components/InventoryCard/InventoryCard";
+// import InventoryCard from "../../components/InventoryCard/InventoryCard";
 import axios from "axios";
 
 const WareHouseDetails = () => {
   const { warehouseId } = useParams();
   const [warehouse, setWarehouse] = useState("");
-  const [details, setDetails] = useState("");
+  // const [details, setDetails] = useState("");
 
   useEffect(() => {
     axios

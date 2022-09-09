@@ -5,10 +5,16 @@ function Header() {
   return (
     <header>
       <nav className="header">
-        <img className="header__logo" src={logo} alt="instock-logo" />
+        <a href="/">
+          <img className="header__logo" src={logo} alt="instock-logo" />
+        </a>
         <div className="header__buttons">
-          <button className="header__btn">Warehouses</button>
-          <button className="header__btn">Inventory</button>
+          <a href="/warehouses">
+            <button className="header__btn">Warehouses</button>
+          </a>
+          <a href="/inventory">
+            <button className="header__btn">Inventory</button>
+          </a>
         </div>
       </nav>
     </header>

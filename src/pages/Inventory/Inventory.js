@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import InventoryCard from "../../components/InventoryCard/InventoryCard";
+import Sort from "../../assets/icons/sort-24px.svg";
 import "./Inventory.scss";
 
 const Inventory = () => {
@@ -26,6 +27,53 @@ const Inventory = () => {
           <button className="inventory__add">+ Add New Item</button>
         </div>
       </div>
+
+      <div className="inventory__container">
+        <div className="inventory__container--box">
+          <h4 className="inventory__container--title">inventory item</h4>
+          <img
+            className="inventory__container--icon"
+            src={Sort}
+            alt="sort-arrow"
+          />
+        </div>
+        <div className="inventory__container--box">
+          <h4 className="inventory__container--title">category</h4>
+          <img
+            className="inventory__container--icon"
+            src={Sort}
+            alt="sort-arrow"
+          />
+        </div>
+        <div className="inventory__container--box">
+          <h4 className="inventory__container--title">status</h4>
+          <img
+            className="inventory__container--icon"
+            src={Sort}
+            alt="sort-arrow"
+          />
+        </div>
+        <div className="inventory__container--box">
+          <h4 className="inventory__container--title">qty</h4>
+          <img
+            className="inventory__container--icon"
+            src={Sort}
+            alt="sort-arrow"
+          />
+        </div>
+        <div className="inventory__container--box">
+          <h4 className="inventory__container--title">warehouse</h4>
+          <img
+            className="inventory__container--icon"
+            src={Sort}
+            alt="sort-arrow"
+          />
+        </div>
+        <h4 className="inventory__container--title inventory__container--action">
+          actions
+        </h4>
+      </div>
+
       <div className="inventory-card">
         {inventories.map((inventory) => {
           return (
