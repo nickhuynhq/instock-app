@@ -1,3 +1,4 @@
+
 import Warehouses from "./pages/Warehouses/Warehouses";
 import Inventory from "./pages/Inventory/Inventory";
 import Footer from "./components/Footer/Footer";
@@ -30,12 +31,25 @@ function App() {
         <Route path="/warehouses/:warehouseId" element={<WarehouseDetails />} />
         <Route path="/warehouses/:warehouseId/edit" element={<EditWarehouse />}
         />
-        <Route path="/inventory/add" element={<AddEditInventory />} />
+        <Route 
+          path="/inventory/add" 
+          element={
+            <AddEditInventory 
+              title="Add New Inventory Item"
+              buttonText="+ Add Item"
+            />
+          } 
+        />
         <Route path="/inventory/:inventoryId" element={<InventoryDetails />} />
         <Route
           path="/inventory/:inventoryId/edit"
-          element={<AddEditInventory />}
+          element={
+            <AddEditInventory 
+              title="Edit Inventory Item"
+              buttonText="Save"
+            />}
         />
+        <Route path="/warehouses/:warehouseid/delete" element={<Warehouses />} />
         <Route path="*" element={<h1>404</h1>} />
       </Routes>
       <Footer />
