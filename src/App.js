@@ -9,6 +9,7 @@ import AddEditInventory from "./pages/AddEditInventory/AddEditInventory";
 import Header from "./components/Header/Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.scss";
+import EditInventory from "./pages/EditInventory/EditInventory";
 
 function App() {
   return (
@@ -47,11 +48,7 @@ function App() {
         <Route path="/inventory/:inventoryId" element={<InventoryDetails />} />
         <Route
           path="/inventory/:inventoryId/edit"
-          element={
-            <AddEditInventory 
-              title="Edit Inventory Item"
-              buttonText="Save"
-            />}
+          element={<EditInventory />}
         />
         <Route path="*" element={<h1>404</h1>} />
       </Routes>

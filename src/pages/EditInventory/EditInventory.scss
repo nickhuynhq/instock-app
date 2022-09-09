@@ -1,0 +1,178 @@
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins";
+
+.add-edit-inventory{
+    display:flex;
+    flex-direction: column;
+    margin-top: -5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background-color: $white;
+    border-radius: 4px;
+    box-shadow: 1px 2px 4px $cloud;
+    font-size: 11px;
+
+    @include tablet{
+        font-size: 12px;
+    }
+
+    &-top{
+        display: flex;
+        align-items: flex-start;
+        padding: 0 1rem;
+        padding-top: 1rem;
+        border-bottom: 1px solid $cloud;
+    }
+
+    &__back-button{
+        margin-top: 0.5rem;
+        width: 28px;
+        cursor: pointer;
+    }
+
+    &__title{
+        font-size: 28px;
+        margin-top:0;
+        padding-top: 0;
+        margin-left: 0.5rem;
+
+        @include tablet{
+            font-size: 32px;
+        }
+    }
+
+    &__form{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.form{
+    font-size: 11px;
+
+    @include tablet{
+        font-size: 12px;
+    }
+
+    &__main{
+        display: flex;
+        flex-direction: column;
+
+        @include tablet {
+            flex-direction: row;
+            padding-top: 1rem;
+        }
+    }
+
+    &__title{
+        margin-bottom: 0;
+        font-size: 20px;
+
+        @include tablet{
+            font-size: 24px;
+        }
+    }
+
+    &__label{
+        margin-top: 1rem;
+        margin-bottom: 0;
+
+        &--hidden{
+            display: none;
+        }
+    }
+
+    &__item-details{
+        display: flex;
+        flex-direction: column;
+        padding: 0 1rem;
+
+        @include tablet{
+            width: 50%;
+        }
+    }
+
+    &__item-availability{
+        @extend .form__item-details;
+
+        @include tablet {
+            border-left: 1px solid $cloud;
+        }
+    }
+
+    &__input{
+        border-radius: 20px;
+        border: 1px solid $cloud;
+        padding: 0.5rem;
+        margin-top: 0.5rem;
+        background-color: $white;
+        font-size: 11px;
+
+        &--hidden{
+            display:none;
+        }
+
+        @include tablet{
+            font-size: 12px;
+        }
+    }
+
+    &__textarea{
+        @extend .form__input;
+        font-family: 'Titillium Web', sans-serif;
+        height: 6rem;
+        resize: none;  
+    }
+
+    &__bottom{
+        display: flex;
+        margin-top: 2rem;
+        padding: 1rem 1rem;
+        background-color: $light-grey;
+
+        @include tablet{
+            justify-content: right;
+        }
+    }
+
+    &__button{
+        border: 1px solid $cloud;
+        padding: 0.5rem 1rem;
+        background-color: $instock-indigo;
+        color: $white;
+        border-radius: 20px;
+        font-size: 13px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        cursor: pointer;
+
+        @include tablet{
+            max-width: 110px;
+            font-size: 13px;
+        }
+
+        &:hover{
+            background-color: $graphite;
+        }
+
+        &--cancel{
+            @extend .form__button;
+            background-color: $white;
+            color: $instock-black;
+            margin-right: 1rem;
+
+            @include tablet{
+                width: max-content;
+            }
+
+            &:hover{
+                color: $instock-indigo;
+                background-color: $white;
+                border: 1px solid $instock-indigo;
+            }
+        }
+    }
+}
