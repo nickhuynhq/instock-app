@@ -13,6 +13,10 @@ export const addInventoryItem = (item) => {
     return axios.post(`${BASE_URL}/inventory/add`, item);
 }
 
+export const editInventoryItem = (item) => {
+    return axios.put(`${BASE_URL}/inventory/:inventoryId/edit`, item);
+}
+
 export const fetchWarehouses = () => {
     return axios.get(`${BASE_URL}/warehouse/`);
 }
