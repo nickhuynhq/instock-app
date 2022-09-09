@@ -32,7 +32,7 @@ const InventoryDetails = () => {
         <div className="inventory-details__edit-button">
           <img className="inventory-details__edit-button-image" src={Edit} alt="Edit Button"/>
         </div>
-      </div>
+      </div> 
       <div className="inventory-details__item-info">
         <div className="item-info__left">
           <div className="item-info__left-description">

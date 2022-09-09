@@ -12,7 +12,7 @@ const ItemCard = ({
   contactName,
   contactEmail,
   contactPhone,
-}) => {
+}) => { 
   let navigate = useNavigate();
   const handleEditClick = (id) => {
     navigate(`/warehouses/${id}/edit`);

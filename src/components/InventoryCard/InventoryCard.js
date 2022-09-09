@@ -20,7 +20,7 @@ const InventoryCard = ({
   const handleDeleteClick = (id) => {
     navigate(`/inventory/${id}/delete`);
   };
-
+  
   return (
     <div className="box">
       <Link to={`/inventory/${id}`}>

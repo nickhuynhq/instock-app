@@ -43,6 +43,7 @@ function App() {
           element={<EditInventory />}
         />
         <Route path="/warehouses/:warehouseid/delete" element={<Warehouses />} />
+        <Route path="/inventory/:inventoryid/delete" element={<Inventory />} />
         <Route path="*" element={<h1>404</h1>} />
       </Routes>
       <Footer />
