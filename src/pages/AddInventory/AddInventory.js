@@ -120,11 +120,11 @@ const AddInventory = ({title, buttonText}) => {
             <h2 className="form__title">Item Availability</h2>
             <p className="form__label">Status</p>
             <div>
-              <input type="radio" id="in-stock" name="status" value="in-stock" defaultChecked onChange={handleStatusSelect}/>
+              <input type="radio" id="in-stock" name="status" value="In Stock" defaultChecked onChange={handleStatusSelect}/>
               <label htmlFor="in-stock">In stock</label>
             </div>
             <div>
-              <input type="radio" id="out-of-stock" name="status" value="out-of-stock" onChange={handleStatusSelect}/>
+              <input type="radio" id="out-of-stock" name="status" value="Out of Stock" onChange={handleStatusSelect}/>
               <label htmlFor="out-of-stock">Out of stock</label>
             </div>
             <label className={itemAvailability==="in-stock" ? "form__label" : "form__label--hidden" } htmlFor="quantity" >Quantity</label>
