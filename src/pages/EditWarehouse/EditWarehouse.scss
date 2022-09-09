@@ -1,0 +1,117 @@
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/colors" as *;
+
+.warehouse{
+      width: 90vw;
+      margin: 0 auto;
+      font-size: 11px;
+      border-radius: 4px;
+      box-shadow: 1px 2px 4px $cloud;
+      padding-top: 1rem;
+
+      @include tablet{
+            width: 70vw;
+      }
+
+      &__title{
+            display: flex;
+            border-bottom: 1px solid $cloud;
+            padding: 0 2rem;
+            
+            &-text{
+                  font-size: 1.75rem;
+                  margin-left: 0.5rem;
+
+                  @include tablet{
+                        font-size: 32px;
+                  }
+            }
+            
+      }
+
+      &__form{
+            display: flex;
+            flex-direction: column;
+      }
+
+      &__form-container{
+            display: flex;
+            flex-direction: column;
+            margin: 1rem 0;
+
+            @include tablet{
+                  flex-direction: row;
+            }
+      }
+
+      &__details{
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid $cloud;
+            padding: 0 2rem;
+
+            @include tablet{
+                  width: 50%;
+            }
+      }
+
+      &__contact{
+            display: flex;
+            flex-direction: column;
+            padding: 0 2rem;
+
+            @include tablet{
+                  width: 50%;
+            }
+      }
+
+      &__label{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1rem;
+      }
+
+      &__input{
+            border-radius: 20px;
+            border: 1px solid $cloud;
+            padding: 0.6rem;
+            margin-top: 0.5rem;
+      }
+
+      &__btn-container{
+            display: flex;
+            background-color: $light-grey;
+            width: 100%;
+            justify-content: flex-end;
+            padding: 1rem;
+
+      }
+
+      &__btn{
+            border: 1px solid #ccc;
+            padding: 0.5rem 0.8rem;
+            background-color: $instock-indigo;
+            color: white;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 1rem;
+            width: 50%;
+            font-size: 0.8rem;
+
+            @include tablet{
+                  width: unset;
+            }
+
+            &--cancel{
+                  background-color: white;
+                  color: black;
+            }
+      }
+
+      &__add-icon{
+            color: white;
+      }
+}
+ 
