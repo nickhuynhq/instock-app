@@ -2,19 +2,23 @@
 @use "../../styles/partials/colors" as *;
 
 .warehouse{
-      width: 90vw;
-      margin: 0 auto;
-      font-size: 11px;
+      display:flex;
+      flex-direction: column;
+      margin-top: -5rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      background-color: $white;
       border-radius: 4px;
       box-shadow: 1px 2px 4px $cloud;
-      padding-top: 1rem;
-
+      font-size: 11px;
+  
       @include tablet{
-            width: 70vw;
+          font-size: 12px;
       }
 
       &__title{
             display: flex;
+            align-items: center;
             border-bottom: 1px solid $cloud;
             padding: 0 2rem;
             

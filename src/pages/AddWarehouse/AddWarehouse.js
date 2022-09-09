@@ -1,16 +1,15 @@
-import "../AddWarehouse/AddEditWarehouse.scss";
+import "./AddEditWarehouse.scss";
 import iconURL from "../../assets/icons/arrow_back-24px.svg";
-import { Link, useParams } from "react-router-dom";
-import { editWarehouse } from "../../utils/api";
+import { Link } from "react-router-dom";
+import { addNewWarehouse } from "../../utils/api";
 import { useState } from "react";
 import IsUploaded from "../../components/IsUploaded/IsUploaded";
 
-const EditWarehouse = () => {
-    const { warehouseId } = useParams();
+const AddWarehouse = () => {
     const [isUploaded, setIsUploaded] = useState(false);
     const handleUploadAgain = () => {
-        setIsUploaded(!isUploaded);
-    };
+      setIsUploaded(!isUploaded);
+    }
     const handleSubmit = (event) => {
         event.preventDefault();
         const warehouse = {
@@ -26,7 +25,7 @@ const EditWarehouse = () => {
             },
         };
 
-        editWarehouse(warehouse, warehouseId)
+        addNewWarehouse(warehouse)
             .then(() => {
                 setIsUploaded(true);
             })
@@ -36,17 +35,10 @@ const EditWarehouse = () => {
 
         event.target.reset();
     };
-
     return (
         <>
+            {isUploaded && <IsUploaded handleUploadAgain={handleUploadAgain} btnText="Add Another Warehouse" modalText="Warehouse Added!"/>}
             <section className="warehouse">
-                {isUploaded && (
-                    <IsUploaded
-                        handleUploadAgain={handleUploadAgain}
-                        btnText="Add Another Warehouse"
-                        modalText="Warehouse Added!"
-                    />
-                )}
                 <div className="warehouse__title">
                     <Link to="/warehouses">
                         <img
@@ -55,7 +47,7 @@ const EditWarehouse = () => {
                             className="warehouse__img"
                         />
                     </Link>
-                    <h1 className="warehouse__title-text">Edit Warehouse</h1>
+                    <h1 className="warehouse__title-text">Add New Warehouse</h1>
                 </div>
                 <form className="warehouse__form" onSubmit={handleSubmit}>
                     <div className="warehouse__form-container">
@@ -145,7 +137,9 @@ const EditWarehouse = () => {
                         >
                             Cancel
                         </Link>
-                        <button className="warehouse__btn">Save</button>
+                        <button className="warehouse__btn">
+                            + Add Warehouse
+                        </button>
                     </div>
                 </form>
             </section>
@@ -153,4 +147,4 @@ const EditWarehouse = () => {
     );
 };
 
-export default EditWarehouse;
+export default AddWarehouse;
