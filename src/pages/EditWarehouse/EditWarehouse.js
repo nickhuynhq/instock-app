@@ -27,7 +27,8 @@ const EditWarehouse = () => {
         };
 
         editWarehouse(warehouse, warehouseId)
-            .then(() => {
+            .then((resolve) => {
+              console.log(resolve.data)
                 setIsUploaded(true);
             })
             .catch((error) => {
