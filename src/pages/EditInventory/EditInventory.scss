@@ -113,6 +113,10 @@
             display:none;
         }
 
+        &:required:invalid {
+            border: 1px solid $red;
+        }
+
         @include tablet{
             font-size: 12px;
         }

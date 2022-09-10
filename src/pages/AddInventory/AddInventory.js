@@ -1,34 +1,28 @@
 import React from 'react'
 import ArrowBack from '../../assets/icons/arrow_back-24px.svg'
+import FormRequiredMessage from '../../components/FormRequiredMessage/FormRequiredMessage';
 import {useState, useEffect} from "react";
 import { v4 as uuidv4 } from 'uuid';
 import {useNavigate} from 'react-router-dom';
 import { fetchInventory, fetchWarehouses, addInventoryItem } from '../../utils/api';
 import "./AddInventory.scss"
 
-const AddInventory = ({title, buttonText}) => {
+
+const AddInventory = () => {
 
   const [inventoryData, setInventoryData] = useState(null)
-  const [categoryValue, setCategoryValue] = useState("default");
   const [warehousesData, setWarehousesData] = useState(null)
-  const [warehouseValue, setWarehouseValue] = useState("default");
-  const [itemAvailability, setItemAvailability] = useState("in-stock");
+  const [itemAvailability, setItemAvailability] = useState("In Stock");
+  const [nameValid, setNameValid] = useState(true);
+  const [descriptionValid, setDescriptionValid] = useState(true);
+  const [categoryValid, setCategoryValid] = useState(true);
+  const [warehouseValid, setWarehouseValid] = useState(true);
   
   let navigate = useNavigate(); 
- 
-  // Handle category change on Select
-  const handleCategoryChange = (e) => {
-    setCategoryValue(e.target.value);
-  };
-
-   // Handle warehouse change on Select
-   const handleWarehouseChange = (e) => {
-    setWarehouseValue(e.target.value);
-  };
 
   // Handle Item Availability Status Select
-  const handleStatusSelect = (e) => {
-    setItemAvailability(e.target.value)
+  const handleStatusSelect = (event) => {
+    setItemAvailability(event.target.value)
   }
 
   const handleCancel = () => {
@@ -43,6 +37,10 @@ const AddInventory = ({title, buttonText}) => {
     const category = event.target.category.value;
     const status = event.target.status.value;
     const quantity = event.target.quantity.value;
+    setNameValid(true);
+    setDescriptionValid(true);
+    setCategoryValid(true);
+    setWarehouseValid(true);
 
     const item = {
       "warehouseName": warehouse,
@@ -53,7 +51,19 @@ const AddInventory = ({title, buttonText}) => {
       "quantity": quantity
     }
 
-    if (name && description) {
+    if (!name) {
+      setNameValid(false);
+    }
+    if (!description) {
+      setDescriptionValid(false);
+    }
+    if (!category) {
+      setCategoryValid(false);
+    }
+    if (!warehouse) {
+      setWarehouseValid(false);
+    }
+    if (warehouse && name && description && category && status && quantity >= 0) {
       window.scrollTo(0,0);
       addInventoryItem(item).then(()=>{
         alert("Item has been added")
@@ -98,29 +108,32 @@ const AddInventory = ({title, buttonText}) => {
     <div className="add-edit-inventory">
       <div className="add-edit-inventory-top">
         <img className="add-edit-inventory__back-button" src={ArrowBack} onClick={handleCancel} alt="Arrow Back"/>
-        <h1 className="add-edit-inventory__title">{title}</h1>
+        <h1 className="add-edit-inventory__title">Add New Inventory Item</h1>
       </div>
       <form className="add-edit-inventory__form" onSubmit={handleAddInventoryItem}>
         <div className='form__main'>
           <div className="form__item-details">
             <h2 className="form__title">Item Details</h2>
             <label className="form__label" htmlFor="name">Item Name</label>
-            <input id="name" name="name" className="form__input" type="text" placeholder='Item Name'/>
+            <input id="name" name="name" className={nameValid ? "form__input" : "form__input--invalid"} type="text" placeholder='Item Name'/>
+            {!nameValid && <FormRequiredMessage />}
             <label className="form__label" htmlFor="description">Description</label>
-            <textarea id="description" name="description" className="form__textarea" placeholder='Please enter a brief item description...'></textarea>
+            <textarea id="description" name="description" className={descriptionValid ? "form__textarea" : "form__textarea--invalid"} placeholder='Please enter a brief item description...'></textarea>
+            {!descriptionValid && <FormRequiredMessage />}
             <label className="form__label" htmlFor="category">Category</label>
-            <select id="category" name="category" className="form__input" defaultValue={categoryValue} onChange={handleCategoryChange}>
-              <option value="default" disabled>Please Select</option>
+            <select id="category" name="category" className={categoryValid ? "form__input" : "form__input--invalid"} defaultValue="">
+              <option value="" disabled>Please Select</option>
                 {filteredCategoryArray.map((item) => (
                   <option key={uuidv4()} value={item}>{item}</option>
                 ))}
             </select>
+            {!categoryValid && <FormRequiredMessage />}
           </div>
           <div className="form__item-availability">
             <h2 className="form__title">Item Availability</h2>
             <p className="form__label">Status</p>
             <div>
-              <input type="radio" id="in-stock" name="status" value="In Stock" defaultChecked onChange={handleStatusSelect}/>
+              <input type="radio" id="in-stock" name="status" value="In Stock" defaultChecked onChange={handleStatusSelect} />
               <label htmlFor="in-stock">In stock</label>
             </div>
             <div>
@@ -128,21 +141,22 @@ const AddInventory = ({title, buttonText}) => {
               <label htmlFor="out-of-stock">Out of stock</label>
             </div>
             <label className={itemAvailability==="in-stock" ? "form__label" : "form__label--hidden" } htmlFor="quantity" >Quantity</label>
-            <input id="quantity" name="quantity" className={itemAvailability==="in-stock" ? "form__input" : "form__input--hidden" } type="number" defaultValue={0}/>
+            <input id="quantity" name="quantity" className={itemAvailability==="In Stock" ? "form__input" : "form__input--hidden" } type="number" defaultValue={0}/>
 
             <label className="form__label" htmlFor="warehouse">Warehouse</label>
-            <select id="warehouse" name="warehouse" className="form__input" defaultValue={warehouseValue} onChange={handleWarehouseChange}>
-              <option value="default" disabled>Please select</option>
+            <select id="warehouse" name="warehouse" className={warehouseValid ? "form__input" : "form__input--invalid"} defaultValue="">
+              <option value="" disabled>Please select</option>
                 {filteredWarehousesArray.map((warehouse) => (
                   <option key={uuidv4()} value={warehouse}>{warehouse}</option>
                 ))}
             </select>
+            {!warehouseValid && <FormRequiredMessage />}
           </div>
         </div>
         
         <div className="form__bottom">
           <button className='form__button--cancel' onClick={handleCancel}>Cancel</button>
-          <button className='form__button' type='submit'>{buttonText}</button>
+          <button className='form__button' type='submit'>+ Add Item</button>
         </div>
         
       </form>

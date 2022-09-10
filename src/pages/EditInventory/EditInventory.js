@@ -10,14 +10,14 @@ const EditInventory = () => {
 
   const [inventoryData, setInventoryData] = useState(null)
   const [warehousesData, setWarehousesData] = useState(null)
-  const [itemAvailability, setItemAvailability] = useState("in-stock");
+  const [itemAvailability, setItemAvailability] = useState("In Stock");
   const [inventoryItem, setInventoryItem] = useState(null);
   const { inventoryId } = useParams();
   let navigate = useNavigate(); 
  
   // Handle Item Availability Status Select
-  const handleStatusSelect = (e) => {
-    setItemAvailability(e.target.value)
+  const handleStatusSelect = (event) => {
+    setItemAvailability(event.target.value)
   }
 
   const handleCancel = () => {
@@ -43,7 +43,7 @@ const EditInventory = () => {
       "quantity": quantity
     }
 
-    if (name && description && quantity >= 0) {
+    if (inventoryId && warehouse && name && description && category && status && quantity >= 0) {
       window.scrollTo(0,0);
       editInventoryItem(item).then(()=>{
         alert("Item has been edited")
@@ -100,9 +100,9 @@ const EditInventory = () => {
           <div className="form__item-details">
             <h2 className="form__title">Item Details</h2>
             <label className="form__label" htmlFor="name">Item Name</label>
-            <input id="name" name="name" className="form__input" type="text" placeholder='Item Name' defaultValue={inventoryItem.itemName}/>
+            <input id="name" name="name" className="form__input" type="text" placeholder='Item Name' defaultValue={inventoryItem.itemName} required/>
             <label className="form__label" htmlFor="description">Description</label>
-            <textarea id="description" name="description" className="form__textarea" placeholder='Please enter a brief item description...' defaultValue={inventoryItem.description}></textarea>
+            <textarea id="description" name="description" className="form__textarea" placeholder='Please enter a brief item description...' defaultValue={inventoryItem.description} required></textarea>
             <label className="form__label" htmlFor="category">Category</label>
             <select id="category" name="category" className="form__input" defaultValue={inventoryItem.category}>
               <option value="default" disabled>Please Select</option>
@@ -115,18 +115,18 @@ const EditInventory = () => {
             <h2 className="form__title">Item Availability</h2>
             <p className="form__label">Status</p>
             <div>
-              <input type="radio" id="in-stock" name="status" value="In Stock" defaultChecked onChange={handleStatusSelect}/>
+              <input type="radio" id="in-stock" name="status" value="In Stock" defaultChecked onChange={handleStatusSelect} required/>
               <label htmlFor="in-stock">In stock</label>
             </div>
             <div>
-              <input type="radio" id="out-of-stock" name="status" value="Out of Stock" onChange={handleStatusSelect}/>
+              <input type="radio" id="out-of-stock" name="status" value="Out of Stock" onChange={handleStatusSelect} required/>
               <label htmlFor="out-of-stock">Out of stock</label>
             </div>
-            <label className={itemAvailability==="in-stock" ? "form__label" : "form__label--hidden" } htmlFor="quantity" >Quantity</label>
-            <input id="quantity" name="quantity" className={itemAvailability==="in-stock" ? "form__input" : "form__input--hidden" } type="number" defaultValue={inventoryItem.quantity}/>
+            <label className={itemAvailability==="In Stock" ? "form__label" : "form__label--hidden" } htmlFor="quantity" >Quantity</label>
+            <input id="quantity" name="quantity" className={itemAvailability==="In Stock" ? "form__input" : "form__input--hidden" } type="number" defaultValue={inventoryItem.quantity} required/>
 
             <label className="form__label" htmlFor="warehouse">Warehouse</label>
-            <select id="warehouse" name="warehouse" className="form__input" defaultValue={inventoryItem.warehouse}>
+            <select id="warehouse" name="warehouse" className="form__input" defaultValue={inventoryItem.warehouseName} required>
               <option value="default" disabled>Please Select</option>
                 {filteredWarehousesArray.map((warehouse) => (
                   <option key={uuidv4()} value={warehouse}>{warehouse}</option>
