@@ -37,7 +37,7 @@ const WareHouseDetails = () => {
           <span className="warehouse__address">{warehouse.address}</span>
         </div>
         <div className="category">
-          <div className="category__label category label--item">
+          <div className="category__label category__label--item">
             <h4>inventory item</h4>
             <img src={sort} alt="arrow" />
           </div>
