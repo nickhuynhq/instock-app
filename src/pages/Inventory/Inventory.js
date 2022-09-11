@@ -89,28 +89,28 @@ const Inventory = () => {
             </button>
           </div>
         </div>
-        <div className="category">
-          <div className="category__label category label--item">
+        <div className="group">
+          <div className="group__label group__label--item">
             <h4>inventory item</h4>
             <img src={sort} alt="arrow" />
           </div>
-          <div className="category__label category__label--category">
+          <div className="group__label group__label--category">
             <h4>category</h4>
             <img src={sort} alt="arrow" />
           </div>
-          <div className="category__label category__label--status">
+          <div className="group__label group__label--status">
             <h4>status</h4>
             <img src={sort} alt="arrow" />
           </div>
-          <div className="category__label category__label--qty">
+          <div className="group__label group__label--qty">
             <h4>qty</h4>
             <img src={sort} alt="arrow" />
           </div>
-          <div className="category__label category__label--warehouse">
+          <div className="group__label group__label--warehouse">
             <h4>warehouse</h4>
             <img src={sort} alt="arrow" />
           </div>
-          <div className="category__label category__label--actions">
+          <div className="group__label group__label--actions">
             <h4>actions</h4>
           </div>
         </div>
