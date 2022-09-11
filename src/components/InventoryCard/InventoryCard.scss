@@ -5,7 +5,19 @@
    
     border-top: 1px solid $cloud;
     padding-top: 1rem;
-    
+
+    &__info {
+        display: flex;
+        gap: 3.5rem;
+       
+        @include tablet{
+        flex-direction: row;
+        margin-bottom: -1.75rem;
+        padding-top: .25rem;
+          
+        }
+    }
+
 
     &__info-left {
         display: flex;
@@ -17,7 +29,8 @@
 
         @include tablet{
             flex-direction: row;
-        
+           
+           
         }
      
     }
@@ -31,18 +44,10 @@
       
         @include tablet{
             flex-direction: row;
-          
-        }
-    }
-
-    &__info {
-        display: flex;
-        gap: 3.5rem;
-       
-        @include tablet{
-        flex-direction: row;
-        
-        gap: 0rem;
+            margin-left: auto;
+            margin-right: 10rem;
+            gap: 4.5rem;
+            
         }
     }
 
@@ -64,20 +69,46 @@
             }
         }
 
+        &--category{
+
+            text-transform: uppercase;
+            font-size: .6875rem;
+            line-height: 1rem;
+            color: $slate;
+            padding-bottom: .25rem;
+            padding-top: 1rem;
+           
+
+            @include tablet{
+                display: none;
+
+            }
+        }
+
+        &--special-blue{
+            color: $instock-indigo;
+            font-size: .8125rem;
+            @include tablet{
+                padding-left: .5rem;
+              
+            }
+           
+        }
+
+        &--special-arrow{
+            margin-top: -1rem;
+            margin-bottom: -.25rem;
+   
+        }
+
         &--span{
             padding-bottom: 1.25rem;
             font-size: .8125rem;
+            
 
         }
 
-        &--blue{
-            padding-bottom: 1.25rem;
-            color: $instock-indigo;
-            font-size: .8125rem;
-         
-        }
-
-
+       
         &--in-stock{
             padding-bottom: 1.25rem;
             color: $green;
@@ -94,8 +125,17 @@
         }
 
         &--out-of-stock{
-            color: rgba(201, 69, 21, 1);
-            background-color: rgba(201, 69, 21, 0.07);
+            padding-bottom: 1.25rem;
+            color: $red;
+            font-size: .6875rem;
+            text-transform: uppercase;
+            height: 1.5rem;
+            background: rgba(201, 69, 21, 0.07);
+            padding-left: .5rem;
+            padding-right: .5rem;
+            padding-top: .25rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
         }
     }
 }
@@ -108,8 +148,19 @@
     display: flex;
     justify-content: space-between;
     padding: 0 1.5rem 1.5rem 1.5rem;
-
+   
     @include tablet{
         justify-content: flex-end;
+    }
+
+    &__btn{
+        width: 1.5rem;
+        height: 1.5rem;
+
+        @include tablet{
+            margin-top: -1rem;
+            
+           
+        }
     }
 }

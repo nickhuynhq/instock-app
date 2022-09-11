@@ -22,6 +22,10 @@ const Inventory = () => {
     return <h1>Loading...</h1>;
   }
 
+  const handleAddClick = () => {
+    navigate("/inventory/add");
+  };
+
   const handleCancelClick = () => {
     navigate("/inventory");
   };
@@ -80,7 +84,9 @@ const Inventory = () => {
           <h1 className="inventory__title">Inventory</h1>
           <div className="inventory__wrap">
             <input className="inventory__search" placeholder="Search..." />
-            <button className="inventory__add">+ Add New Item</button>
+            <button className="inventory__add" onClick={handleAddClick}>
+              + Add New Item
+            </button>
           </div>
         </div>
         <div className="category">
