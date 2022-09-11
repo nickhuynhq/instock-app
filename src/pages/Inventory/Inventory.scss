@@ -217,6 +217,10 @@
 
         &--status{
             padding-left: 3rem;
+
+            @include tablet{
+                padding-left: 2.5rem;
+            }
             @include desktop{
                 padding-left: 5rem;
             }
@@ -227,11 +231,16 @@
 
             @include desktop{
                 padding-left: 7rem;
+                margin-right: -1.5rem;
             }
         }
 
         &--warehouse{
             padding-right: 3rem;
+
+            @include tablet{
+                padding-right: 4rem;
+            }
         }
         
         &--actions{

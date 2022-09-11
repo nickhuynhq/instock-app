@@ -61,7 +61,9 @@ const InventoryCard = ({
             </div>
             <div className="box__info-wrap">
               <span className="box__info-wrap--label">Warehouse</span>
-              <span className="box__info-wrap--span">{warehouseName}</span>
+              <span className="box__info-wrap--span-warehouse">
+                {warehouseName}
+              </span>
             </div>
           </div>
         </div>

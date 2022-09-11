@@ -5,6 +5,7 @@
    
     border-top: 1px solid $cloud;
     padding-top: 1rem;
+   
 
     &__info {
         display: flex;
@@ -29,8 +30,14 @@
 
         @include tablet{
             flex-direction: row;
-           
-           
+            flex-basis: 33%;
+            justify-content: space-between;
+        }
+
+        @include desktop{
+            padding-left: 2rem;
+            margin-right: 6rem;
+            flex-basis: 29%;
         }
      
     }
@@ -44,16 +51,16 @@
       
         @include tablet{
             flex-direction: row;
-            margin-left: auto;
-            margin-right: 10rem;
-            gap: 4.5rem;
-            
+            flex-basis: 33%;
+            justify-content: space-between;
         }
     }
 
     &__info-wrap{
         display: flex;
         flex-direction: column;
+
+       
 
         &--label{
             text-transform: uppercase;
@@ -92,7 +99,6 @@
                 padding-left: .5rem;
               
             }
-           
         }
 
         &--special-arrow{
@@ -105,10 +111,16 @@
             padding-bottom: 1.25rem;
             font-size: .8125rem;
             
-
         }
 
-       
+        &--span-warehouse{
+            padding-bottom: 1.25rem;
+            font-size: .8125rem;
+            margin-right: -2.75rem;
+
+            
+        }
+
         &--in-stock{
             padding-bottom: 1.25rem;
             color: $green;
@@ -121,7 +133,14 @@
             padding-top: .25rem;
             border-radius: 20px;
             margin-bottom: 1rem;
-            
+
+            @include tablet{
+                margin-right: 2.5rem;
+            }
+
+            @include desktop{
+                margin-right: 7rem;
+            }
         }
 
         &--out-of-stock{
@@ -136,6 +155,14 @@
             padding-top: .25rem;
             border-radius: 20px;
             margin-bottom: 1rem;
+
+            @include tablet{
+                margin-right: 1rem;
+            }
+
+            @include desktop{
+                margin-right: 5rem;
+            }
         }
     }
 }
@@ -159,8 +186,6 @@
 
         @include tablet{
             margin-top: -1rem;
-            
-           
         }
     }
 }
