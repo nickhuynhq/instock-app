@@ -1,9 +1,10 @@
 import React from "react";
 import ArrowBack from "../../assets/icons/arrow_back-24px.svg";
 import FormRequiredMessage from "../../components/FormRequiredMessage/FormRequiredMessage";
+
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
   fetchInventory,
   fetchWarehouses,
@@ -11,7 +12,6 @@ import {
   fetchInventoryById,
 } from "../../utils/api";
 import "./EditInventory.scss";
-import { type } from "@testing-library/user-event/dist/type";
 
 
 const EditInventory = () => {
@@ -32,7 +32,6 @@ const EditInventory = () => {
   const [warehouseValid, setWarehouseValid] = useState(true);
 
   const { inventoryId } = useParams();
-  let navigate = useNavigate();
 
   // Handle Form Input Value Changes
   const handleStatusSelect = (event) => {
@@ -47,9 +46,6 @@ const EditInventory = () => {
   const handleItemQuantityChange = (event) => {
     setItemQuantity(event.target.value);
   }
-  const handleCancel = () => {
-    navigate("/inventory");
-  };
 
   // Handle Form Submit
   const handleEditInventoryItem = (event) => {
@@ -150,12 +146,13 @@ const EditInventory = () => {
   return (
     <div className="add-edit-inventory">
       <div className="add-edit-inventory-top">
-        <img
-          className="add-edit-inventory__back-button"
-          src={ArrowBack}
-          onClick={handleCancel}
-          alt="Arrow Back"
-        />
+        <Link to="/inventory">
+          <img
+            className="add-edit-inventory__back-button"
+            src={ArrowBack}
+            alt="Arrow Back"
+          />
+        </Link>
         <h1 className="add-edit-inventory__title">Edit Inventory Item</h1>
       </div>
       <form
@@ -279,9 +276,11 @@ const EditInventory = () => {
         </div>
 
         <div className="form__bottom">
-          <button className="form__button--cancel" onClick={handleCancel}>
-            Cancel
-          </button>
+          <Link to="/inventory">
+            <button className="form__button--cancel">
+              Cancel
+            </button>
+          </Link>
           <button className="form__button" type="submit">
             Save
           </button>

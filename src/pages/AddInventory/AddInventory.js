@@ -3,12 +3,8 @@ import ArrowBack from "../../assets/icons/arrow_back-24px.svg";
 import FormRequiredMessage from "../../components/FormRequiredMessage/FormRequiredMessage";
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { useNavigate } from "react-router-dom";
-import {
-  fetchInventory,
-  fetchWarehouses,
-  addInventoryItem,
-} from "../../utils/api";
+import {Link } from "react-router-dom";
+import { fetchInventory, fetchWarehouses ,addInventoryItem } from "../../utils/api";
 import "./AddInventory.scss";
 
 const AddInventory = () => {
@@ -17,7 +13,6 @@ const AddInventory = () => {
   const [warehousesData, setWarehousesData] = useState(null);
   const [itemAvailability, setItemAvailability] = useState("In Stock");
   const [itemQuantity,  setItemQuantity] = useState("Not Filled");
-
   // Form Input Validation States
   const [nameValid, setNameValid] = useState(true);
   const [descriptionValid, setDescriptionValid] = useState(true);
@@ -25,18 +20,13 @@ const AddInventory = () => {
   const [quantityValid, setQuantityValid] = useState(true);
   const [warehouseValid, setWarehouseValid] = useState(true);
 
-  let navigate = useNavigate();
-
   // Handle Item Availability Status when selected (Radio Button)
   const handleStatusSelect = (event) => {
     setItemAvailability(event.target.value);
   };
+    // Handle Item Quantity Change
   const handleItemQuantityChange = (event) => {
     setItemQuantity(event.target.value);
-  }
-
-  const handleCancel = () => {
-    navigate("/inventory");
   };
 
   const handleAddInventoryItem = (event) => {
@@ -113,7 +103,7 @@ const AddInventory = () => {
 
   if (!inventoryData || !warehousesData) {
     return <p>Loading</p>;
-  }
+  };
 
   // Get all inventory items and their categories, then remove duplicates to get a up to date category list
   const categoryArray = inventoryData.map((item) => {
@@ -130,12 +120,13 @@ const AddInventory = () => {
   return (
     <div className="add-edit-inventory">
       <div className="add-edit-inventory-top">
-        <img
-          className="add-edit-inventory__back-button"
-          src={ArrowBack}
-          onClick={handleCancel}
-          alt="Arrow Back"
-        />
+        <Link to="/inventory">
+          <img
+            className="add-edit-inventory__back-button"
+            src={ArrowBack}
+            alt="Arrow Back"
+          />
+        </Link>
         <h1 className="add-edit-inventory__title">Add New Inventory Item</h1>
       </div>
       <form
@@ -261,9 +252,11 @@ const AddInventory = () => {
         </div>
 
         <div className="form__bottom">
-          <button className="form__button--cancel" onClick={handleCancel}>
-            Cancel
-          </button>
+          <Link to="/inventory">
+            <button className="form__button--cancel">
+              Cancel
+            </button>
+          </Link>
           <button className="form__button" type="submit">
             + Add Item
           </button>
