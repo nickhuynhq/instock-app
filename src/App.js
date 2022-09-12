@@ -14,10 +14,11 @@ import "./App.scss";
 
 
 function App() {
+
   return (
     <BrowserRouter>
       <Header />
-      <Routes>
+      <Routes> 
         <Route path="/" element={<Warehouses />} />
         <Route path="/inventory" element={<Inventory />} />
         <Route path="/warehouses" element={<Warehouses />} />
