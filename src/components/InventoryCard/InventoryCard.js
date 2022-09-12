@@ -39,7 +39,7 @@ const InventoryCard = ({
             </div>
             <div className="box__info-wrap">
               <span className="box__info-wrap--category">Category</span>
-              <span className="box__info-wrap--span">{category}</span>
+              <span className="box__info-wrap--inventory-name">{category}</span>
             </div>
           </div>
           <div className="box__info-right">

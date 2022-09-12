@@ -74,6 +74,8 @@
                 display: none;
 
             }
+
+        
         }
 
         &--category{
@@ -111,6 +113,12 @@
             padding-bottom: 1.25rem;
             font-size: .8125rem;
             
+        }
+
+        &--inventory-name{
+            padding-bottom: 1.25rem;
+            font-size: .8125rem;
+           
         }
 
         &--span-warehouse{
@@ -180,6 +188,10 @@
         justify-content: flex-end;
     }
 
+    @include desktop{
+        margin-right: 5rem;
+    }
+
     &__btn{
         width: 1.5rem;
         height: 1.5rem;
@@ -187,5 +199,6 @@
         @include tablet{
             margin-top: -1rem;
         }
+
     }
 }

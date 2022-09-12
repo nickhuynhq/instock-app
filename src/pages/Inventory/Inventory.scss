@@ -264,46 +264,49 @@
         width: 50%;  
         white-space: nowrap;   
 
+        &--item{
+            min-width: 18%;
+        }
+
         &--category{
-            padding-left: 6rem;
+           
             @include desktop{
-                padding-left: 4rem;
+                min-width: 18%;
             }
         }
 
         &--status{
-            padding-left: 3rem;
+           
 
             @include tablet{
-                padding-left: 2.5rem;
+                min-width: 18%;
             }
             @include desktop{
-                padding-left: 5rem;
+                min-width: 23%;
             }
         }
 
         &--qty{
-            padding-left: 4rem;
+           
 
             @include desktop{
-                padding-left: 6rem;
-                margin-right: -1.5rem;
+                min-width: 23%;
             }
         }
 
         &--warehouse{
-            padding-right: 3rem;
+           
 
             @include tablet{
-                padding-right: 4rem;
+                min-width: 23%;
             }
         }
         
         &--actions{
-            padding-right: 3rem;
+         
 
             @include desktop{
-                margin-right: -4rem;
+                min-width: 18%;
             }
         }
 }
