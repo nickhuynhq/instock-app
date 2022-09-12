@@ -3,13 +3,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import InventoryCard from "../../components/InventoryCard/InventoryCard";
 import sort from "../../assets/icons/sort-24px.svg";
+import CloseLogo from "../../assets/icons/close-24px.svg"
 import "./Inventory.scss";
 import { useParams, useNavigate } from "react-router-dom";
 
 const Inventory = () => {
   const [inventories, setInventories] = useState(null);
   const { inventoryid } = useParams();
-  console.log("beginning", inventoryid);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -27,6 +27,7 @@ const Inventory = () => {
   };
 
   const handleCancelClick = () => {
+    {document.body.classList.remove("hidden__active")}
     navigate("/inventory");
   };
 
@@ -34,6 +35,7 @@ const Inventory = () => {
     axios
       .delete(`http://localhost:8081/inventory/${inventoryid}`)
       .then((response) => {
+        {document.body.classList.remove("hidden__active")}
         navigate("/inventory");
         return axios.get("http://localhost:8081/inventory");
       })
@@ -46,34 +48,23 @@ const Inventory = () => {
 
   if (inventoryid !== undefined) {
     const item = inventories.find((item) => item.id === inventoryid);
-    console.log("overlay", inventoryid);
-    overlay = (
+    overlay = 
       <>
-        <div className="overlay"></div>
-        <div className="overlay__text">
-          <img className="overlay__x" src={""} alt="X"></img>
-          <h1 className="overlay__header">Delete {item.name} Warehouse?</h1>
-          <p className="overlay__para">
-            Please confirm that you'd like to delete {item.name} from the list
-            of warehouses. You won't be able to undo this action
-          </p>
-          <div className="overlay__buttons">
-            <button className="cancel" onClick={handleCancelClick}>
-              Cancel
-            </button>
-            <button
-              className="delete"
-              onClick={() => {
-                handleDeleteClick(inventoryid);
-              }}
-            >
-              Delete
-            </button>
+        {document.body.classList.add("hidden__active")}
+        <div className='overlay__grey'></div>
+        <div className='overlay'>
+          <div className='overlay__text'>
+            <img className="overlay__x" src={CloseLogo} onClick={handleCancelClick} alt="X"></img>
+            <h1 className='overlay__header'>Delete {item.itemName} Inventory Item?</h1>
+            <p className='overlay__para'>Please confirm that you'd like to delete {item.itemName} from the inventory list. You won't be able to undo this action</p>
+            <div className='overlay__buttons'>
+              <button className='cancel' onClick={handleCancelClick}>Cancel</button>
+              <button  className='delete' onClick={()=>{handleDeleteClick(inventoryid)}}>Delete</button>
+            </div>
           </div>
         </div>
-        <div className="overlay__box"></div>
       </>
-    );
+    ;
   }
 
   return (
@@ -92,23 +83,23 @@ const Inventory = () => {
         <div className="group">
           <div className="group__label group__label--item">
             <h4>inventory item</h4>
-            <img src={sort} alt="arrow" />
+            <img className="arrow" src={sort} alt="arrow" />
           </div>
           <div className="group__label group__label--category">
             <h4>category</h4>
-            <img src={sort} alt="arrow" />
+            <img className="arrow" src={sort} alt="arrow" />
           </div>
           <div className="group__label group__label--status">
             <h4>status</h4>
-            <img src={sort} alt="arrow" />
+            <img className="arrow" src={sort} alt="arrow" />
           </div>
           <div className="group__label group__label--qty">
             <h4>qty</h4>
-            <img src={sort} alt="arrow" />
+            <img className="arrow" src={sort} alt="arrow" />
           </div>
           <div className="group__label group__label--warehouse">
             <h4>warehouse</h4>
-            <img src={sort} alt="arrow" />
+            <img className="arrow" src={sort} alt="arrow" />
           </div>
           <div className="group__label group__label--actions">
             <h4>actions</h4>
