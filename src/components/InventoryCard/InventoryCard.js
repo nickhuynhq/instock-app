@@ -25,15 +25,17 @@ const InventoryCard = ({
     // mobile
     <>
       <div className="box">
-        <Link to={`/inventory/${id}`} className="hover">
+        
           <div className="box__info">
             <div className="box__info-left">
               <div className="box__info-wrap">
                 <span className="box__info-wrap--label">Inventory Item</span>
                 <div className="box__info-span">
+                  <Link to={`/inventory/${id}`}>
                   <span className="box__info-span--special-blue">
                     {itemName}
                   </span>
+                  </Link>
                   <img
                     className="box__info-span--special-arrow"
                     src={chevron}
@@ -73,7 +75,6 @@ const InventoryCard = ({
               </div>
             </div>
           </div>
-        </Link>
         <div className="icons">
           <img
             className="icons__btn"
@@ -96,13 +97,15 @@ const InventoryCard = ({
 
       {/* tablet & desktop */}
 
-      <Link to={`/inventory/${id}`} className="hover">
+      
         <div className="tablet__info">
           <div className="tablet__info-wrap">
             <div className="tablet__info-span">
-              <span className="tablet__info-span--special-blue">
-                {itemName}
-              </span>
+              <Link to={`/inventory/${id}`}>
+                <span className="tablet__info-span--special-blue">
+                  {itemName}
+                </span>
+              </Link>
               <img
                 className="tablet__info-span--special-arrow"
                 src={chevron}
@@ -153,7 +156,6 @@ const InventoryCard = ({
             ></img>
           </div>
         </div>
-      </Link>
     </>
 
     // tablet and desktop
