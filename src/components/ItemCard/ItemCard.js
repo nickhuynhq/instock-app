@@ -52,14 +52,14 @@ const ItemCard = ({
           </div>
         </Link>
         <div className="item-icons">
-          <img
+          <img className="pointer"
             alt="delete logo"
             src={deleteLogo}
             onClick={() => {
               handleDeleteClick(id);
             }}
           ></img>
-          <img
+          <img className="pointer"
             alt="edit logo"
             src={editLogo}
             onClick={() => {
@@ -88,8 +88,8 @@ const ItemCard = ({
           <span className="tablet__span">{contactEmail}</span>
         </div>
         <div className="image__holder section">
-          <img alt="delete logo" src={deleteLogo} onClick={() => {handleDeleteClick(id)}}></img>
-          <img alt="edit logo" src={editLogo} onClick={() => {handleEditClick(id)}}></img>
+          <img className="pointer" alt="delete logo" src={deleteLogo} onClick={() => {handleDeleteClick(id)}}></img>
+          <img className="pointer" alt="edit logo" src={editLogo} onClick={() => {handleEditClick(id)}}></img>
         </div>
       </div>
     </>

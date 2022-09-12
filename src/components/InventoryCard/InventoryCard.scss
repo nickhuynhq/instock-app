@@ -7,6 +7,10 @@
     padding-top: 1rem;
     font-size: .8rem;
 
+    &:hover{
+        background-color: $cloud;
+    }
+
     @include tablet{
         display: none;
     }
@@ -190,7 +194,6 @@
     &__btn{
         width: 1.5rem;
         height: 1.5rem;
-
         @include tablet{
             margin-top: -1rem;
         }
@@ -202,7 +205,11 @@
     display: none;
 
     @include tablet {
-        margin: 1rem;
+        &:hover{
+            background-color: $cloud;
+        }
+        align-items: center;
+        padding: 0.5rem 1rem;
         display: flex;
         justify-content: space-between;
         font-size: .8rem;
@@ -210,6 +217,8 @@
 
     &-wrap{
         min-width: 18%;
+
+        
 
         &--in-stock{
             padding-bottom: .25rem;
@@ -254,3 +263,4 @@
 
     }
 }
+

@@ -25,7 +25,7 @@ const InventoryCard = ({
     // mobile
     <>
       <div className="box">
-        <Link to={`/inventory/${id}`}>
+        <Link to={`/inventory/${id}`} className="hover">
           <div className="box__info">
             <div className="box__info-left">
               <div className="box__info-wrap">
@@ -96,7 +96,7 @@ const InventoryCard = ({
 
       {/* tablet & desktop */}
 
-      <Link to={`/inventory/${id}`}>
+      <Link to={`/inventory/${id}`} className="hover">
         <div className="tablet__info">
           <div className="tablet__info-wrap">
             <div className="tablet__info-span">
