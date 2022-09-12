@@ -12,11 +12,6 @@ const Warehouses = () => {
   const [items, setItems] = useState(null)
   const {warehouseid} = useParams()
   const navigate = useNavigate()
-  const newClass = document.getElementsByClassName("item__subhead")
-  const newClass2 = document.getElementsByClassName("item__search--img")
-  console.log(newClass)
-  console.log(newClass2)
-  
   
 
   useEffect (()=>{

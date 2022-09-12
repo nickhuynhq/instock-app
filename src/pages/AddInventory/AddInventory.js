@@ -1,6 +1,7 @@
 import React from "react";
 import ArrowBack from "../../assets/icons/arrow_back-24px.svg";
 import FormRequiredMessage from "../../components/FormRequiredMessage/FormRequiredMessage";
+import IsUploaded from "../../components/IsUploaded/IsUploaded";
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import {Link } from "react-router-dom";
@@ -8,6 +9,7 @@ import { fetchInventory, fetchWarehouses ,addInventoryItem } from "../../utils/a
 import "./AddInventory.scss";
 
 const AddInventory = () => {
+  const [isUploaded, setIsUploaded] = useState(false);
   // Object Data States
   const [inventoryData, setInventoryData] = useState(null);
   const [warehousesData, setWarehousesData] = useState(null);
@@ -19,6 +21,10 @@ const AddInventory = () => {
   const [categoryValid, setCategoryValid] = useState(true);
   const [quantityValid, setQuantityValid] = useState(true);
   const [warehouseValid, setWarehouseValid] = useState(true);
+
+  const handleUploadAgain = () => {
+    setIsUploaded(!isUploaded);
+};
 
   // Handle Item Availability Status when selected (Radio Button)
   const handleStatusSelect = (event) => {
@@ -74,16 +80,16 @@ const AddInventory = () => {
       description &&
       category &&
       status &&
-      quantity >= 0
+      ((itemAvailability === "In Stock" && quantity > 0) || (itemAvailability === "Out of Stock" && quantity === 0))
     ) {
       window.scrollTo(0, 0);
       addInventoryItem(item).then(() => {
         // Add Success Module Here
-        alert("Item has been added");
+        setIsUploaded(true);
       });
     } else {
       // Add Failed Module Here
-      alert("Item has not been uploaded");
+      console.log("Item has not been edited");
     }
   };
 
@@ -119,6 +125,7 @@ const AddInventory = () => {
 
   return (
     <div className="add-edit-inventory">
+      {isUploaded && <IsUploaded handleUploadAgain={handleUploadAgain} btnText="Add Another Inventory" modalText="Inventory Added!"/>}
       <div className="add-edit-inventory-top">
         <Link to="/inventory">
           <img
