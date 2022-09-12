@@ -1,0 +1,92 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/breakpoints" as *;
+
+.header{
+    width: 100%;
+    height: 12.5rem;
+    background-color: $graphite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -4.5rem;
+    margin-top: -2rem;
+   
+
+    @include tablet{
+        height: 11.625rem;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: unset;
+        margin-top: 0rem;
+    }
+ 
+    &__logo{
+        width: 8.0369rem;
+        height: 1.75rem;
+
+        
+        @include tablet{
+          margin: 2rem 0 0 2rem;
+        }
+        @include desktop{
+           margin-left: 8.125rem;
+        }
+
+    }
+
+    &__buttons{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+     
+       
+
+       @include tablet{
+        justify-content: end;
+     
+       }
+
+       @include desktop{
+        margin-right: 6rem;
+       }
+
+      
+    }
+
+
+    &__btn{
+        display: flex;
+        align-items: center;
+        font-size: .8125rem;
+        font-weight: 600;
+        height: 2.25rem;
+        background-color: $graphite;
+        color: $white;
+        border: none;
+        padding: 20px;
+        border-radius: 20px;
+        margin-top: 2rem;
+        margin-right: 1rem;
+
+        &--active{
+            background-color: $instock-black;
+        }
+
+        @include tablet{
+            height: 1.375rem;
+            font-size: .875rem;
+            margin-right: 3rem;
+           
+        
+        }
+
+        &:hover{
+            background-color: $instock-black;
+        }
+
+    }
+
+   
+
+}

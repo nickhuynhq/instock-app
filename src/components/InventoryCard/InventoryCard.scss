@@ -1,0 +1,260 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/breakpoints" as *;
+
+.box {
+
+    border-top: 1px solid $cloud;
+    padding-top: 1rem;
+    font-size: .8rem;
+
+    &:hover {
+        background-color: $cloud;
+    }
+
+    @include tablet {
+        display: none;
+    }
+
+
+    &__info {
+        display: flex;
+        gap: 3.5rem;
+
+        @include tablet {
+            flex-direction: row;
+            margin-bottom: -1.75rem;
+            padding-top: .25rem;
+
+        }
+    }
+
+
+    &__info-left {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        word-wrap: normal;
+        padding-left: 1.5rem;
+
+
+        @include tablet {
+            flex-direction: row;
+            flex-basis: 33%;
+            justify-content: space-between;
+        }
+
+        @include desktop {
+            padding-left: 2rem;
+            margin-right: 6rem;
+            flex-basis: 29%;
+        }
+
+    }
+
+    &__info-right {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        word-wrap: normal;
+
+
+        @include tablet {
+            flex-direction: row;
+            flex-basis: 33%;
+            justify-content: space-between;
+        }
+    }
+
+    &__info-wrap {
+        display: flex;
+        flex-direction: column;
+
+        @include tablet {
+            flex-direction: row;
+            justify-content: space-between;
+            min-width: 10;
+        }
+
+
+
+        &--label {
+            text-transform: uppercase;
+            font-size: .6875rem;
+            line-height: 1rem;
+            color: $slate;
+            padding-bottom: .25rem;
+
+
+            @include tablet {
+                display: none;
+
+            }
+
+        }
+
+        &--category {
+
+            text-transform: uppercase;
+            font-size: .6875rem;
+            line-height: 1rem;
+            color: $slate;
+            padding-bottom: .25rem;
+            padding-top: 1rem;
+
+
+            @include tablet {
+                display: none;
+
+            }
+        }
+
+        &--special-blue {
+            color: $instock-indigo;
+            font-size: .8125rem;
+
+        }
+
+        &--special-arrow {
+            margin-top: -1rem;
+            margin-bottom: -.25rem;
+
+        }
+
+        &--in-stock {
+            padding-bottom: 1.25rem;
+            color: $green;
+            font-size: .6875rem;
+            text-transform: uppercase;
+            height: 1.5rem;
+            background: rgba(21, 132, 99, 0.07);
+            padding-left: .5rem;
+            padding-right: .5rem;
+            padding-top: .25rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+
+            @include tablet {
+                margin-right: 2.5rem;
+            }
+
+            @include desktop {
+                margin-right: 7rem;
+            }
+        }
+
+        &--out-of-stock {
+            padding-bottom: 1.25rem;
+            color: $red;
+            font-size: .6875rem;
+            text-transform: uppercase;
+            height: 1.5rem;
+            background: rgba(201, 69, 21, 0.07);
+            padding-left: .5rem;
+            padding-right: .5rem;
+            padding-top: .25rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+
+            @include tablet {
+                margin-right: 1rem;
+            }
+
+            @include desktop {
+                margin-right: 5rem;
+            }
+        }
+    }
+}
+
+.box:hover {
+    background-color: $light-grey;
+}
+
+.icons {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1.5rem 1.5rem 1.5rem;
+
+    @include tablet {
+        justify-content: flex-end;
+    }
+
+    @include desktop {
+        margin-right: 5rem;
+    }
+
+    &__btn {
+        width: 1.5rem;
+        height: 1.5rem;
+
+        @include tablet {
+            margin-top: -1rem;
+        }
+
+    }
+}
+
+.tablet__info {
+    display: none;
+
+    @include tablet {
+        &:hover {
+            background-color: $cloud;
+        }
+
+        align-items: center;
+        padding: 0.5rem 1rem;
+        display: flex;
+        justify-content: space-between;
+        font-size: .8rem;
+    }
+
+    &-wrap {
+        min-width: 18%;
+
+
+
+        &--in-stock {
+            padding-bottom: .25rem;
+            color: $green;
+            font-size: .6875rem;
+            text-transform: uppercase;
+            height: 1.5rem;
+            background: rgba(21, 132, 99, 0.07);
+            padding-left: .5rem;
+            padding-right: .5rem;
+            padding-top: .25rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+
+            @include tablet {
+                margin-right: 2.5rem;
+            }
+        }
+
+        &--out-of-stock {
+            padding-bottom: .25rem;
+            color: $red;
+            font-size: .6875rem;
+            text-transform: uppercase;
+            height: 1.5rem;
+            background: rgba(201, 69, 21, 0.07);
+            padding-left: .5rem;
+            padding-right: .5rem;
+            padding-top: .25rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+
+            @include tablet {
+                margin-right: 1rem;
+            }
+
+            @include desktop {
+                margin-right: 5rem;
+            }
+        }
+
+
+
+    }
+}

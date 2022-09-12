@@ -1,0 +1,101 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/colors" as *;
+
+.card {
+
+    @include tablet {
+        display: flex;
+        gap: 1rem;
+        justify-content: space-between;
+    }
+
+    &__holder {
+        margin: 1rem;
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    &__info {
+        display: flex;
+        justify-content: left;
+        gap: 1rem;
+
+        &--side {
+            display: flex;
+            width: 45%;
+            flex-direction: column;
+            gap: 0.25rem;
+            flex-wrap: wrap;
+            word-wrap: normal;
+            overflow: scroll;
+        }
+
+        &--label {
+            padding-top: 0.5rem;;
+            color: $slate;
+            font-size: 0.68rem;
+
+        }
+        
+
+        &--span {
+            font-size: 0.8rem;
+
+        }
+    }
+}
+
+.tablet__holder {
+
+    display: none;
+    font-size: 0.8rem;
+
+    @include tablet {
+        display: flex;
+        justify-content: space-between;
+        margin: 1rem;
+        overflow: hidden;
+    }
+}
+
+.section {
+    min-width: 23%;
+    overflow: hidden;
+}
+
+.contact__holder {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-icons {
+    display: flex;
+    justify-content: space-between;
+    padding: 0rem;
+    padding-top: 0.5rem;
+
+    }
+
+.pointer {
+    cursor: pointer;
+}
+
+
+.ware-name {
+    color: $instock-indigo;
+    display: flex;
+    align-items: flex-start;
+
+    &::after {
+        content: url("../../assets/icons/chevron_right-24px.svg");
+        
+    }
+}
+
+.contact-info__holder {
+    display: flex;
+    flex-direction: column;
+}

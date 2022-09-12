@@ -1,0 +1,139 @@
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins";
+ 
+.inventory-details{
+    display: flex;
+    flex-direction: column;
+    margin: 0 1rem;
+    font-size: 11px;
+    border-radius: 4px;
+    background-color: $white;
+    color: #13182C;
+    padding: 1rem 0;;
+    box-shadow: 1px 2px 4px $cloud;
+
+    @include tablet{
+        font-size: 12px;
+    }
+
+    &-top{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: .0625rem solid $cloud;
+        padding: 0 1rem;
+
+        @include tablet{
+            padding: 0 2rem;
+        }
+
+        &__left{
+            display: flex;
+        }
+    }
+
+    &__title{
+        font-size: 1.75rem;
+        margin-left: 0.5rem;
+
+        @include tablet{
+            font-size: 32px;
+        }
+    }
+
+    &__back-button{
+        cursor: pointer;
+    }
+
+    &__edit-button{
+        display: flex;
+        width: 1.5rem;
+        height: 1.5rem;
+        padding: 0.3rem;
+        border-radius: 50%;
+        background-color: $instock-indigo;
+        cursor: pointer;
+
+        &-image{
+            filter: brightness(0) invert(1);
+        }
+
+        @include tablet{
+            width: 2rem;
+            height: 2rem;
+        }
+    }
+
+    &__label{
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+    }
+
+    &__item-info{
+        display: flex;
+        flex-direction: column;
+        padding: 0 1rem;
+
+        @include tablet{
+            padding: 1rem 2rem;
+            flex-direction: row;
+        }
+    }
+
+    &__stock{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 24px;
+        width: max-content;
+        padding: 0 8px;
+        border-radius: 20px;
+        text-transform: uppercase;
+        color: rgba(21, 132, 99, 1);
+        background-color: rgba(21, 132, 99, 0.07);
+
+        @include tablet{
+            margin-bottom: 2rem;
+        }
+
+        &--out-of-stock{
+            @extend .inventory-details__stock;
+            color: rgba(201, 69, 21, 1);
+            background-color: rgba(201, 69, 21, 0.07);
+        }
+    }
+
+}
+
+.item-info__left{
+    @include tablet{
+        width: 50%;
+        border-right: 1px solid $cloud;
+    }
+
+    &-description{
+        width: 100%;
+
+        @include tablet{
+            width: 75%;
+            margin-bottom: 2rem;
+        }
+    }
+}
+.item-info__stock{
+    display: flex;
+
+    @include tablet{
+        width: 50%;
+        margin-left: 2rem;
+    }
+
+    &-left{
+        width: 50%;
+    }
+
+    &-right{
+        width: 50%;
+    }
+}
