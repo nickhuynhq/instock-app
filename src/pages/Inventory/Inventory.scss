@@ -2,7 +2,7 @@
 @use "../../styles/partials/breakpoints" as *;
 
 
-.inventory{
+.inventory {
     margin-top: 3rem;
     margin-left: 1rem;
     margin-right: 1rem;
@@ -10,27 +10,27 @@
     border-radius: 4px;
     box-shadow: 1px 2px 4px $cloud;
 
-    @include tablet{
+    @include tablet {
         margin-top: -5rem;
     }
 
-    @include desktop{
+    @include desktop {
         margin-left: 8.125rem;
         margin-right: 8.125rem;
     }
 
-    &__header{
-        @include tablet{
+    &__header {
+        @include tablet {
             display: flex;
             gap: 12rem;
         }
 
-        @include desktop{
+        @include desktop {
             gap: 33rem;
         }
     }
 
-    &__title{
+    &__title {
         font-weight: 600;
         font-size: 1.75rem;
         line-height: 2.25rem;
@@ -38,20 +38,20 @@
         padding-left: 1.5rem;
         color: $instock-black;
 
-        @include tablet{
+        @include tablet {
             font-size: 2rem;
             padding-left: 2rem;
-            
+
         }
 
-        @include desktop{
-           line-height: 2.5rem;
-           padding-left: 2.5rem;
+        @include desktop {
+            line-height: 2.5rem;
+            padding-left: 2.5rem;
 
         }
     }
 
-    &__search{
+    &__search {
         height: 2.25rem;
         width: 15.3125rem;
         border-radius: 20px;
@@ -62,25 +62,26 @@
         background-repeat: no-repeat;
         background-position: 95% 50%;
 
-        @include tablet{
+        @include tablet {
             width: 11.5625rem;
             height: 2.375rem;
             width: 45%;
         }
 
-        @include desktop{
+        @include desktop {
             width: 17.125rem;
             height: 2.375rem;
             width: 45%;
         }
     }
-    &__search::placeholder{
+
+    &__search::placeholder {
         padding-left: 1rem;
         color: $slate;
         font-family: 'Titillium Web', sans-serif;
     }
-    
-    &__add{
+
+    &__add {
         height: 2.25rem;
         width: 15.3125rem;
         border-radius: 20px;
@@ -88,25 +89,31 @@
         border: none;
         background-color: $instock-indigo;
         color: $white;
-        font-family: 'Titillium Web', sans-serif; 
-        margin-bottom: 1.5rem; 
-        @include tablet{
+        font-family: 'Titillium Web', sans-serif;
+        margin-bottom: 1.5rem;
+        cursor: pointer;
+
+        @include tablet {
             width: 8rem;
             height: 2.375rem;
             width: 36%;
         }
-        
-        @include desktop{
+
+        @include desktop {
             width: 8rem;
             height: 2.375rem;
             width: 36%;
         }
     }
 
-    &__container{
+    &__add:hover {
+        background-color: $graphite;
+    }
+
+    &__container {
         display: none;
 
-        @include tablet{
+        @include tablet {
             display: initial;
             display: flex;
             justify-content: space-between;
@@ -116,30 +123,27 @@
             width: 100%;
             padding: 0 2rem;
             background-color: $light-grey;
-    
-            
         }
 
-        &--box{
-            @include tablet{
+        &--box {
+            @include tablet {
                 display: flex;
                 align-items: center;
                 width: 15%;
                 font-size: .75rem;
                 white-space: nowrap;
-                
-            }  
+            }
         }
 
-        &--icon{
-            @include tablet{
+        &--icon {
+            @include tablet {
                 width: 1rem;
                 height: 1rem;
             }
         }
 
-        &--action{
-            @include tablet{
+        &--action {
+            @include tablet {
                 font-size: .75rem;
             }
         }
@@ -147,11 +151,11 @@
 
 }
 
-.inventory__wrap{
+.inventory__wrap {
     display: flex;
     flex-direction: column;
 
-    @include tablet{
+    @include tablet {
         flex-direction: row;
         margin-top: 3.25rem;
         width: 100%;
@@ -159,7 +163,7 @@
 
 }
 
-.overlay{
+.overlay {
 
     background-color: white;
     height: 130vh;
@@ -183,7 +187,7 @@
         width: 60%;
         margin-left: 20%;
     }
-   
+
     &__buttons {
         margin-top: 50%;
         display: flex;
@@ -195,7 +199,7 @@
             gap: 1rem;
         }
     }
-    
+
     &__x {
         width: 2rem;
         margin-left: 90%;
@@ -246,23 +250,26 @@
     }
 }
 
-.group{
+.group {
     display: none;
 
-    @include tablet{
-       
+    @include tablet {
+
         display: flex;
         justify-content: space-between;
         min-width: 18%;
-        margin: 1rem;
+        margin: 1rem 0 1rem 0;
+        padding-left: 2rem;
+        padding-right: 1rem;
         background-color: rgba(247, 248, 249, 0.7);
     }
 
-    @include desktop{
+    @include desktop {
         padding-left: 2.5rem;
     }
-    &__label{
-     
+
+    &__label {
+
         display: flex;
         flex-direction: row;
         text-transform: uppercase;
@@ -270,21 +277,26 @@
         color: $slate;
         min-width: 10%;
 
-       
+    }
 
-       
-       
-
-    
-
-}
-
-.arrow{
-    width: 1rem;
-    height: 1rem;
-    margin-top: 1.15rem;
-    margin-left: .25rem;
-}
+    .arrow {
+        width: 1rem;
+        height: 1rem;
+        margin-top: 1.15rem;
+        margin-left: .25rem;
+    }
 
 }
 
+.inventory-card {
+
+    @include tablet {
+        padding-left: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    @include desktop {
+        padding-left: 1.5rem;
+    }
+
+}
