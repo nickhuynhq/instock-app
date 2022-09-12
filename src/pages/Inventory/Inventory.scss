@@ -208,11 +208,12 @@
     &__grey {
         @include tablet {
             background-color: $instock-black;
-            width: 100vw;
+            width: 120%;
             height: 120vh;
             margin-top: -10rem;
             position: fixed;
             opacity: 50%;
+            margin-left: -10%;
         }
     }
 }

@@ -3,13 +3,14 @@ import ArrowBack from '../../assets/icons/arrow_back-24px.svg'
 import Edit from '../../assets/icons/edit-24px.svg'
 import './InventoryDetails.scss'
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { fetchInventoryById } from '../../utils/api';
 
 const InventoryDetails = () => {
 
   const [inventoryItem, setInventoryItem] = useState(null);
   const { inventoryId } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchInventoryById(inventoryId)
@@ -22,15 +23,24 @@ const InventoryDetails = () => {
     return <p>Loading</p>;
   }
 
+ 
+
+  const handleEditInventory = () => {
+    navigate(`/inventory/${inventoryId}/edit`);
+  };
+  const handleBack = () => {
+    navigate(`/inventory`);
+  };
+
   return (
     <div className="inventory-details">
       <div className="inventory-details-top">
         <div className="inventory-details-top__left">
-          <img className="inventory-details__back-button" src={ArrowBack} alt="Arrow Back"/>
+            <img className="inventory-details__back-button" src={ArrowBack} alt="Arrow Back" onClick={handleBack}/>
           <h1 className="inventory-details__title">{inventoryItem.itemName}</h1>
         </div>
         <div className="inventory-details__edit-button">
-          <img className="inventory-details__edit-button-image" src={Edit} alt="Edit Button"/>
+            <img className="inventory-details__edit-button-image" src={Edit} alt="Edit Button" onClick={handleEditInventory}/>
         </div>
       </div> 
       <div className="inventory-details__item-info">
