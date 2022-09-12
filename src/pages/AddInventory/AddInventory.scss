@@ -113,6 +113,11 @@
             display:none;
         }
 
+        &--invalid{
+            @extend .form__input;
+            border: 1px solid $red;
+        }
+
         @include tablet{
             font-size: 12px;
         }
@@ -122,7 +127,12 @@
         @extend .form__input;
         font-family: 'Titillium Web', sans-serif;
         height: 6rem;
-        resize: none;  
+        resize: none; 
+        
+        &--invalid{
+            @extend .form__textarea;
+            border: 1px solid $red;
+        }
     }
 
     &__bottom{

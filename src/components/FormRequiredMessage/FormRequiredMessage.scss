@@ -1,0 +1,23 @@
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/colors" as *;
+
+.required-message{
+    display: flex;
+    align-items: center;
+    font-size: .6875rem;
+    color: $red;
+    margin-top: 0.5rem;
+
+    @include tablet{
+        font-size: .75rem;
+    }
+
+    &__icon{
+        max-height: 1rem;
+        margin-right: .25rem;
+    }
+
+    &__text{
+        margin:0;
+    }
+}
