@@ -1,7 +1,7 @@
 import React from "react";
 import ArrowBack from "../../assets/icons/arrow_back-24px.svg";
 import FormRequiredMessage from "../../components/FormRequiredMessage/FormRequiredMessage";
-
+import IsUploaded from "../../components/IsUploaded/IsUploaded";
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Link, useParams } from "react-router-dom";
@@ -15,6 +15,8 @@ import "./EditInventory.scss";
 
 
 const EditInventory = () => {
+  const [isUploaded, setIsUploaded] = useState(false);
+
   // Object Data States
   const [inventoryData, setInventoryData] = useState(null);
   const [warehousesData, setWarehousesData] = useState(null);
@@ -61,7 +63,7 @@ const EditInventory = () => {
     setNameValid(true);
     setDescriptionValid(true);
     setCategoryValid(true);
-    setItemQuantity(true);
+    setQuantityValid(true);
     setWarehouseValid(true);
 
     const item = {
@@ -84,7 +86,10 @@ const EditInventory = () => {
     if (!category) {
       setCategoryValid(false);
     }
-    if (!quantity) {
+    if (itemAvailability === "In Stock" && itemQuantity <= 0) {
+      setQuantityValid(false);
+    }
+    if (itemAvailability === "Out of Stock" && itemQuantity < 0) {
       setQuantityValid(false);
     }
     if (!warehouse) {
@@ -97,16 +102,21 @@ const EditInventory = () => {
       description &&
       category &&
       status &&
-      quantity >= 0
+      ((itemAvailability === "In Stock" && itemQuantity > 0) || (itemAvailability === "Out of Stock" && itemQuantity === 0))
+      
     ) {
       window.scrollTo(0, 0);
       editInventoryItem(item).then(() => {
-        alert("Item has been edited");
+        setIsUploaded(true);
       });
     } else {
-      alert("Item has not been edited");
+      console.log("Item has not been edited");
     }
   };
+
+  const handleUploadAgain = () => {
+    setIsUploaded(!isUploaded);
+  }
 
   useEffect(() => {
     fetchInventory()
@@ -145,6 +155,7 @@ const EditInventory = () => {
   // Render elements & components
   return (
     <div className="add-edit-inventory">
+      {isUploaded && <IsUploaded handleUploadAgain={handleUploadAgain} btnText="Update Another Information" modalText="Inventory Updated!"/>}
       <div className="add-edit-inventory-top">
         <Link to="/inventory">
           <img
@@ -246,7 +257,7 @@ const EditInventory = () => {
               name="quantity"
               className={
                 itemAvailability === "In Stock"
-                  ? itemQuantity >= 0 ? "form__input" : "form__input--invalid"
+                  ? quantityValid ? "form__input" : "form__input--invalid"
                   : "form__input--hidden"
               }
               type="number"

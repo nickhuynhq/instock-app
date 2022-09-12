@@ -6,12 +6,12 @@ import SortLogo from "../../assets/icons/sort-24px.svg"
 import "./Warehouses.scss"
 import { useParams, useNavigate } from 'react-router-dom'
 import CloseLogo from "../../assets/icons/close-24px.svg"
+import Magnify from "../../assets/icons/search-24px.svg"
 const Warehouses = () => {
 
   const [items, setItems] = useState(null)
   const {warehouseid} = useParams()
   const navigate = useNavigate()
-  
   
 
   useEffect (()=>{
@@ -25,11 +25,15 @@ const Warehouses = () => {
 
   const handleAddClick = () => {
     {document.body.classList.remove("hidden__active")}
+    {newClass[0].classList.remove("change-position")}
+    {newClass2[0].classList.remove("change-position")}
     navigate("/warehouses/add")
   }
 
   const handleCancelClick = () => {
     {document.body.classList.remove("hidden__active")}
+    {newClass[0].classList.remove("change-position")}
+    {newClass2[0].classList.remove("change-position")}
     navigate("/warehouses")
   }
 
@@ -37,6 +41,8 @@ const Warehouses = () => {
     axios.delete(`http://localhost:8081/warehouse/${warehouseid}`)
       .then ((response)=>{  
         {document.body.classList.remove("hidden__active")}
+        {newClass[0].classList.remove("change-position")}
+        {newClass2[0].classList.remove("change-position")}
         navigate("/warehouses")
         return axios.get("http://localhost:8081/warehouse")
       })
@@ -81,7 +87,8 @@ const Warehouses = () => {
           <h1 className='items__header--title'>Warehouses</h1>
           <div className="item__subhead">
             <input className="item__search" placeholder='Search . . .'/>
-            <button className="item__button" onClick={handleAddClick}>Add New Warehouse</button>
+            <img className="item__search--img" src={Magnify} alt="magnifying glass"></img>
+            <button className="item__button" onClick={handleAddClick}>+ Add New Warehouse</button>
           </div>
         </div>
         <div className="label__holder">

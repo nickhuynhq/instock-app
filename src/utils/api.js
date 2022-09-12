@@ -26,5 +26,5 @@ export const addNewWarehouse = (body) => {
 }
 
 export const editWarehouse = (body, warehouseId) => {
-    return axios.post(`${BASE_URL}/warehouse/${warehouseId}/edit`, body);
+    return axios.put(`${BASE_URL}/warehouse/${warehouseId}/edit`, body);
 }
