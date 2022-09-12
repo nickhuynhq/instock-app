@@ -1,45 +1,39 @@
-import React from 'react'
-import ArrowBack from '../../assets/icons/arrow_back-24px.svg'
-import {useState, useEffect} from "react";
-import { v4 as uuidv4 } from 'uuid';
-import {useNavigate} from 'react-router-dom';
-import { fetchInventory, fetchWarehouses, addInventoryItem } from '../../utils/api';
+import React from "react";
+import ArrowBack from "../../assets/icons/arrow_back-24px.svg";
+import FormRequiredMessage from "../../components/FormRequiredMessage/FormRequiredMessage";
 import IsUploaded from "../../components/IsUploaded/IsUploaded";
-import "./AddInventory.scss"
+import { useState, useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
+import {Link } from "react-router-dom";
+import { fetchInventory, fetchWarehouses ,addInventoryItem } from "../../utils/api";
+import "./AddInventory.scss";
 
-const AddInventory = ({title, buttonText}) => {
-
-  const [inventoryData, setInventoryData] = useState(null)
-  const [categoryValue, setCategoryValue] = useState("default");
-  const [warehousesData, setWarehousesData] = useState(null)
-  const [warehouseValue, setWarehouseValue] = useState("default");
-  const [itemAvailability, setItemAvailability] = useState("in-stock");
+const AddInventory = () => {
   const [isUploaded, setIsUploaded] = useState(false);
-  
-  let navigate = useNavigate(); 
- 
-  // Handle category change on Select
-  const handleCategoryChange = (e) => {
-    setCategoryValue(e.target.value);
-  };
-
-   // Handle warehouse change on Select
-   const handleWarehouseChange = (e) => {
-    setWarehouseValue(e.target.value);
-  };
-
-  // Handle Item Availability Status Select
-  const handleStatusSelect = (e) => {
-    setItemAvailability(e.target.value)
-  }
-
-  const handleCancel = () => {
-    navigate("/inventory")
-  }
+  // Object Data States
+  const [inventoryData, setInventoryData] = useState(null);
+  const [warehousesData, setWarehousesData] = useState(null);
+  const [itemAvailability, setItemAvailability] = useState("In Stock");
+  const [itemQuantity,  setItemQuantity] = useState("Not Filled");
+  // Form Input Validation States
+  const [nameValid, setNameValid] = useState(true);
+  const [descriptionValid, setDescriptionValid] = useState(true);
+  const [categoryValid, setCategoryValid] = useState(true);
+  const [quantityValid, setQuantityValid] = useState(true);
+  const [warehouseValid, setWarehouseValid] = useState(true);
 
   const handleUploadAgain = () => {
     setIsUploaded(!isUploaded);
-  }
+};
+
+  // Handle Item Availability Status when selected (Radio Button)
+  const handleStatusSelect = (event) => {
+    setItemAvailability(event.target.value);
+  };
+    // Handle Item Quantity Change
+  const handleItemQuantityChange = (event) => {
+    setItemQuantity(event.target.value);
+  };
 
   const handleAddInventoryItem = (event) => {
     event.preventDefault();
@@ -49,31 +43,61 @@ const AddInventory = ({title, buttonText}) => {
     const category = event.target.category.value;
     const status = event.target.status.value;
     const quantity = event.target.quantity.value;
+    setNameValid(true);
+    setDescriptionValid(true);
+    setCategoryValid(true);
+    setQuantityValid(true);
+    setWarehouseValid(true);
 
     const item = {
-      "warehouseName": warehouse,
-      "itemName": name,
-      "description": description,
-      "category": category,
-      "status": status,
-      "quantity": quantity
-    }
+      warehouseName: warehouse,
+      itemName: name,
+      description: description,
+      category: category,
+      status: status,
+      quantity: quantity,
+    };
 
-    if (name && description) {
-      window.scrollTo(0,0);
-      addInventoryItem(item).then(()=>{
-        setIsUploaded(true);
+    // Form input validation
+    if (!name) {
+      setNameValid(false);
+    }
+    if (!description) {
+      setDescriptionValid(false);
+    }
+    if (!category) {
+      setCategoryValid(false);
+    }
+    if ((itemAvailability === "In Stock" && quantity <= 0) || !quantity) {
+      setQuantityValid(false);
+    }
+    if (!warehouse) {
+      setWarehouseValid(false);
+    }
+    if (
+      warehouse &&
+      name &&
+      description &&
+      category &&
+      status &&
+      quantity >= 0
+    ) {
+      window.scrollTo(0, 0);
+      addInventoryItem(item).then(() => {
+        // Add Success Module Here
+        alert("Item has been added");
       });
     } else {
-      alert("Item has not been uploaded")
+      // Add Failed Module Here
+      alert("Item has not been uploaded");
     }
-  }
+  };
 
   useEffect(() => {
     fetchInventory()
       .then((response) => {
         setInventoryData(response.data);
-        return fetchWarehouses()
+        return fetchWarehouses();
       })
       .then((response) => {
         setWarehousesData(response.data);
@@ -81,80 +105,172 @@ const AddInventory = ({title, buttonText}) => {
       .catch((error) => {
         console.log(error);
       });
-
-  }, [itemAvailability])
+  }, [itemAvailability]);
 
   if (!inventoryData || !warehousesData) {
     return <p>Loading</p>;
-  }
+  };
 
   // Get all inventory items and their categories, then remove duplicates to get a up to date category list
   const categoryArray = inventoryData.map((item) => {
     return item.category;
-  })
+  });
   let filteredCategoryArray = [...new Set(categoryArray)];
 
   // Get all warehouses and their names, then remove duplicates to get a up to date warehouses list
   const warehousesArray = warehousesData.map((warehouse) => {
     return warehouse.name;
-  })
+  });
   let filteredWarehousesArray = [...new Set(warehousesArray)];
-  
+
   return (
     <div className="add-edit-inventory">
       {isUploaded && <IsUploaded handleUploadAgain={handleUploadAgain} btnText="Add Another Inventory" modalText="Inventory Added!"/>}
       <div className="add-edit-inventory-top">
-        <img className="add-edit-inventory__back-button" src={ArrowBack} onClick={handleCancel} alt="Arrow Back"/>
-        <h1 className="add-edit-inventory__title">{title}</h1>
+        <Link to="/inventory">
+          <img
+            className="add-edit-inventory__back-button"
+            src={ArrowBack}
+            alt="Arrow Back"
+          />
+        </Link>
+        <h1 className="add-edit-inventory__title">Add New Inventory Item</h1>
       </div>
-      <form className="add-edit-inventory__form" onSubmit={handleAddInventoryItem}>
-        <div className='form__main'>
+      <form
+        className="add-edit-inventory__form"
+        onSubmit={handleAddInventoryItem}
+      >
+        <div className="form__main">
           <div className="form__item-details">
             <h2 className="form__title">Item Details</h2>
-            <label className="form__label" htmlFor="name">Item Name</label>
-            <input id="name" name="name" className="form__input" type="text" placeholder='Item Name'/>
-            <label className="form__label" htmlFor="description">Description</label>
-            <textarea id="description" name="description" className="form__textarea" placeholder='Please enter a brief item description...'></textarea>
-            <label className="form__label" htmlFor="category">Category</label>
-            <select id="category" name="category" className="form__input" defaultValue={categoryValue} onChange={handleCategoryChange}>
-              <option value="default" disabled>Please Select</option>
-                {filteredCategoryArray.map((item) => (
-                  <option key={uuidv4()} value={item}>{item}</option>
-                ))}
+            <label className="form__label" htmlFor="name">
+              Item Name
+            </label>
+            <input
+              id="name"
+              name="name"
+              className={nameValid ? "form__input" : "form__input--invalid"}
+              type="text"
+              placeholder="Item Name"
+            />
+            {!nameValid && <FormRequiredMessage />}
+            <label className="form__label" htmlFor="description">
+              Description
+            </label>
+            <textarea
+              id="description"
+              name="description"
+              className={
+                descriptionValid ? "form__textarea" : "form__textarea--invalid"
+              }
+              placeholder="Please enter a brief item description..."
+            />
+            {!descriptionValid && <FormRequiredMessage />}
+            <label className="form__label" htmlFor="category">
+              Category
+            </label>
+            <select
+              id="category"
+              name="category"
+              className={categoryValid ? "form__input" : "form__input--invalid"}
+              defaultValue=""
+            >
+              <option value="" disabled>
+                Please Select
+              </option>
+              {filteredCategoryArray.map((item) => (
+                <option key={uuidv4()} value={item}>
+                  {item}
+                </option>
+              ))}
             </select>
+            {!categoryValid && <FormRequiredMessage />}
           </div>
           <div className="form__item-availability">
             <h2 className="form__title">Item Availability</h2>
             <p className="form__label">Status</p>
             <div>
-              <input type="radio" id="in-stock" name="status" value="In Stock" defaultChecked onChange={handleStatusSelect}/>
+              <input
+                type="radio"
+                id="in-stock"
+                name="status"
+                value="In Stock"
+                defaultChecked
+                onChange={handleStatusSelect}
+              />
               <label htmlFor="in-stock">In stock</label>
             </div>
             <div>
-              <input type="radio" id="out-of-stock" name="status" value="Out of Stock" onChange={handleStatusSelect}/>
+              <input
+                type="radio"
+                id="out-of-stock"
+                name="status"
+                value="Out of Stock"
+                onChange={handleStatusSelect}
+              />
               <label htmlFor="out-of-stock">Out of stock</label>
             </div>
-            <label className={itemAvailability==="in-stock" ? "form__label" : "form__label--hidden" } htmlFor="quantity" >Quantity</label>
-            <input id="quantity" name="quantity" className={itemAvailability==="in-stock" ? "form__input" : "form__input--hidden" } type="number" defaultValue={0}/>
+            <label
+              className={
+                itemAvailability === "In Stock"
+                  ? "form__label"
+                  : "form__label--hidden"
+              }
+              htmlFor="quantity"
+            >
+              Quantity
+            </label>
+            <input
+              id="quantity"
+              name="quantity"
+              className={
+                itemAvailability === "In Stock"
+                  ? quantityValid ? "form__input" : "form__input--invalid" 
+                  : "form__input--hidden"
+              }
+              type="number"
+              onChange={handleItemQuantityChange}
+              placeholder="0"
+            />
+            {!quantityValid && <FormRequiredMessage />}
 
-            <label className="form__label" htmlFor="warehouse">Warehouse</label>
-            <select id="warehouse" name="warehouse" className="form__input" defaultValue={warehouseValue} onChange={handleWarehouseChange}>
-              <option value="default" disabled>Please select</option>
-                {filteredWarehousesArray.map((warehouse) => (
-                  <option key={uuidv4()} value={warehouse}>{warehouse}</option>
-                ))}
+            <label className="form__label" htmlFor="warehouse">
+              Warehouse
+            </label>
+            <select
+              id="warehouse"
+              name="warehouse"
+              className={
+                warehouseValid ? "form__input" : "form__input--invalid"
+              }
+              defaultValue=""
+            >
+              <option value="" disabled>
+                Please select
+              </option>
+              {filteredWarehousesArray.map((warehouse) => (
+                <option key={uuidv4()} value={warehouse}>
+                  {warehouse}
+                </option>
+              ))}
             </select>
+            {!warehouseValid && <FormRequiredMessage />}
           </div>
         </div>
-        
+
         <div className="form__bottom">
-          <button className='form__button--cancel' onClick={handleCancel}>Cancel</button>
-          <button className='form__button' type='submit'>{buttonText}</button>
+          <Link to="/inventory">
+            <button className="form__button--cancel">
+              Cancel
+            </button>
+          </Link>
+          <button className="form__button" type="submit">
+            + Add Item
+          </button>
         </div>
-        
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default AddInventory
+export default AddInventory;
