@@ -25,15 +25,13 @@ const Warehouses = () => {
 
   const handleAddClick = () => {
     {document.body.classList.remove("hidden__active")}
-    {newClass[0].classList.remove("change-position")}
-    {newClass2[0].classList.remove("change-position")}
+   
     navigate("/warehouses/add")
   }
 
   const handleCancelClick = () => {
     {document.body.classList.remove("hidden__active")}
-    {newClass[0].classList.remove("change-position")}
-    {newClass2[0].classList.remove("change-position")}
+
     navigate("/warehouses")
   }
 
@@ -41,8 +39,7 @@ const Warehouses = () => {
     axios.delete(`http://localhost:8081/warehouse/${warehouseid}`)
       .then ((response)=>{  
         {document.body.classList.remove("hidden__active")}
-        {newClass[0].classList.remove("change-position")}
-        {newClass2[0].classList.remove("change-position")}
+
         navigate("/warehouses")
         return axios.get("http://localhost:8081/warehouse")
       })
