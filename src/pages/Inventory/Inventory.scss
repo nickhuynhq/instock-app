@@ -65,11 +65,13 @@
         @include tablet{
             width: 11.5625rem;
             height: 2.375rem;
+            width: 45%;
         }
 
         @include desktop{
             width: 17.125rem;
             height: 2.375rem;
+            width: 45%;
         }
     }
     &__search::placeholder{
@@ -91,11 +93,13 @@
         @include tablet{
             width: 8rem;
             height: 2.375rem;
+            width: 36%;
         }
         
         @include desktop{
             width: 8rem;
             height: 2.375rem;
+            width: 36%;
         }
     }
 
@@ -150,6 +154,7 @@
     @include tablet{
         flex-direction: row;
         margin-top: 3.25rem;
+        width: 100%;
     }
 
 }
@@ -244,10 +249,11 @@
     display: none;
 
     @include tablet{
-        display: inherit;
+       
         display: flex;
-        margin-right: -3rem;
-        padding-left: 1rem;
+        justify-content: space-between;
+        min-width: 18%;
+        margin: 1rem;
         background-color: rgba(247, 248, 249, 0.7);
     }
 
@@ -261,55 +267,13 @@
         text-transform: uppercase;
         font-size: .75rem;
         color: $slate;
-        width: 50%;  
-        white-space: nowrap;   
+        min-width: 10%;
 
-        &--item{
-            min-width: 18%;
-        }
+       
 
-        &--category{
-           
-            @include desktop{
-                min-width: 18%;
-            }
-        }
+       
+       
 
-        &--status{
-           
-
-            @include tablet{
-                min-width: 18%;
-            }
-            @include desktop{
-                min-width: 23%;
-            }
-        }
-
-        &--qty{
-           
-
-            @include desktop{
-                min-width: 23%;
-            }
-        }
-
-        &--warehouse{
-           
-
-            @include tablet{
-                min-width: 23%;
-            }
-        }
-        
-        &--actions{
-         
-
-            @include desktop{
-                min-width: 18%;
-            }
-        }
-}
     
 
 }
@@ -320,3 +284,6 @@
     margin-top: 1.15rem;
     margin-left: .25rem;
 }
+
+}
+

@@ -104,27 +104,27 @@ const Inventory = () => {
           </div>
         </div>
         <div className="group">
-          <div className="group__label group__label--item">
+          <div className="group__label">
             <h4>inventory item</h4>
             <img className="arrow" src={sort} alt="arrow" />
           </div>
-          <div className="group__label group__label--category">
+          <div className="group__label">
             <h4>category</h4>
             <img className="arrow" src={sort} alt="arrow" />
           </div>
-          <div className="group__label group__label--status">
+          <div className="group__label">
             <h4>status</h4>
             <img className="arrow" src={sort} alt="arrow" />
           </div>
-          <div className="group__label group__label--qty">
+          <div className="group__label">
             <h4>qty</h4>
             <img className="arrow" src={sort} alt="arrow" />
           </div>
-          <div className="group__label group__label--warehouse">
+          <div className="group__label">
             <h4>warehouse</h4>
             <img className="arrow" src={sort} alt="arrow" />
           </div>
-          <div className="group__label group__label--actions">
+          <div className="group__label">
             <h4>actions</h4>
           </div>
         </div>
