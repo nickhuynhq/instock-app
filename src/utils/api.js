@@ -14,7 +14,7 @@ export const addInventoryItem = (item) => {
 }
 
 export const editInventoryItem = (item) => {
-    return axios.put(`${BASE_URL}/inventory/:inventoryId/edit`, item);
+    return axios.put(`${BASE_URL}/inventory/${item.id}/edit`, item);
 }
 
 export const fetchWarehouses = () => {

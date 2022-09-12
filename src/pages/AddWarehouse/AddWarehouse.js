@@ -1,17 +1,13 @@
-import "../AddWarehouse/AddEditWarehouse.scss";
+import "./AddEditWarehouse.scss";
 import iconURL from "../../assets/icons/arrow_back-24px.svg";
-import { Link, useParams } from "react-router-dom";
-import { editWarehouse } from "../../utils/api";
+import { Link } from "react-router-dom";
+import { addNewWarehouse } from "../../utils/api";
 import { useState } from "react";
 import IsUploaded from "../../components/IsUploaded/IsUploaded";
 import FormRequiredMessage from "../../components/FormRequiredMessage/FormRequiredMessage";
 
-const EditWarehouse = () => {
-    const { warehouseId } = useParams();
+const AddWarehouse = () => {
     const [isUploaded, setIsUploaded] = useState(false);
-    const handleUploadAgain = () => {
-        setIsUploaded(!isUploaded);
-    };
 
     // Form Input Validation States (warehouse)
     const [warehouseNameValid, setWarehouseNameValid] = useState(true);
@@ -24,6 +20,9 @@ const EditWarehouse = () => {
     const [phoneValid, setPhoneValid] = useState(true);
     const [emailValid, setEmailValid] = useState(true);
 
+    const handleUploadAgain = () => {
+      setIsUploaded(!isUploaded);
+    }
     const handleSubmit = (event) => {
         event.preventDefault();
         // Reset validation states when submitted
@@ -81,21 +80,22 @@ const EditWarehouse = () => {
             && event.target.position.value
             && event.target.phoneNumber.value
             && event.target.email.value) {
-            
-            editWarehouse(warehouse, warehouseId)
-            .then((resolve) => {
-            console.log(resolve.data)
-                setIsUploaded(true);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-            event.target.reset();
+                addNewWarehouse(warehouse)
+                .then(() => {
+                    setIsUploaded(true);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+
+                event.target.reset();
+        } else {
+            // Add Failed Module Here
         }
     };
-
     return (
         <>
+            {isUploaded && <IsUploaded handleUploadAgain={handleUploadAgain} btnText="Add Another Warehouse" modalText="Warehouse Added!"/>}
             <section className="warehouse">
                 <div className="warehouse__title">
                     <Link to="/warehouses">
@@ -105,7 +105,7 @@ const EditWarehouse = () => {
                             className="warehouse__img"
                         />
                     </Link>
-                    <h1 className="warehouse__title-text">Edit Warehouse</h1>
+                    <h1 className="warehouse__title-text">Add New Warehouse</h1>
                 </div>
                 <form className="warehouse__form" onSubmit={handleSubmit}>
                     <div className="warehouse__form-container">
@@ -204,7 +204,7 @@ const EditWarehouse = () => {
                             Cancel
                         </Link>
                         <button className="warehouse__btn">
-                            Save
+                            + Add Warehouse
                         </button>
                     </div>
                 </form>
@@ -213,4 +213,4 @@ const EditWarehouse = () => {
     );
 };
 
-export default EditWarehouse;
+export default AddWarehouse;
