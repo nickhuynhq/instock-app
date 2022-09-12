@@ -4,6 +4,7 @@ import {useState, useEffect} from "react";
 import { v4 as uuidv4 } from 'uuid';
 import {useNavigate} from 'react-router-dom';
 import { fetchInventory, fetchWarehouses, addInventoryItem } from '../../utils/api';
+import IsUploaded from "../../components/IsUploaded/IsUploaded";
 import "./AddInventory.scss"
 
 const AddInventory = ({title, buttonText}) => {
@@ -13,6 +14,7 @@ const AddInventory = ({title, buttonText}) => {
   const [warehousesData, setWarehousesData] = useState(null)
   const [warehouseValue, setWarehouseValue] = useState("default");
   const [itemAvailability, setItemAvailability] = useState("in-stock");
+  const [isUploaded, setIsUploaded] = useState(false);
   
   let navigate = useNavigate(); 
  
@@ -33,6 +35,10 @@ const AddInventory = ({title, buttonText}) => {
 
   const handleCancel = () => {
     navigate("/inventory")
+  }
+
+  const handleUploadAgain = () => {
+    setIsUploaded(!isUploaded);
   }
 
   const handleAddInventoryItem = (event) => {
@@ -56,7 +62,7 @@ const AddInventory = ({title, buttonText}) => {
     if (name && description) {
       window.scrollTo(0,0);
       addInventoryItem(item).then(()=>{
-        alert("Item has been added")
+        setIsUploaded(true);
       });
     } else {
       alert("Item has not been uploaded")
@@ -96,6 +102,7 @@ const AddInventory = ({title, buttonText}) => {
   
   return (
     <div className="add-edit-inventory">
+      {isUploaded && <IsUploaded handleUploadAgain={handleUploadAgain} btnText="Add Another Inventory" modalText="Inventory Added!"/>}
       <div className="add-edit-inventory-top">
         <img className="add-edit-inventory__back-button" src={ArrowBack} onClick={handleCancel} alt="Arrow Back"/>
         <h1 className="add-edit-inventory__title">{title}</h1>

@@ -1,8 +1,8 @@
 import "../AddWarehouse/AddEditWarehouse.scss";
 import iconURL from "../../assets/icons/arrow_back-24px.svg";
 import { Link, useParams } from "react-router-dom";
-import { editWarehouse } from "../../utils/api";
-import { useState } from "react";
+import { editWarehouse, fetchWarehouses } from "../../utils/api";
+import { useEffect, useState } from "react";
 import IsUploaded from "../../components/IsUploaded/IsUploaded";
 
 const EditWarehouse = () => {
@@ -11,6 +11,19 @@ const EditWarehouse = () => {
     const handleUploadAgain = () => {
         setIsUploaded(!isUploaded);
     };
+    const [foundWarehouse, setFoundWarehouse] = useState(null);
+
+    useEffect(()=> {
+      fetchWarehouses()
+      .then((resolve) => {
+        const warehouses = resolve.data;
+        const warehouse = warehouses.find(warehouse => warehouse.id === warehouseId);
+        setFoundWarehouse(warehouse);
+      }).catch((error) => {
+        console.log(error)
+      })
+    }, [])
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const warehouse = {
@@ -28,7 +41,6 @@ const EditWarehouse = () => {
 
         editWarehouse(warehouse, warehouseId)
             .then((resolve) => {
-              console.log(resolve.data)
                 setIsUploaded(true);
             })
             .catch((error) => {
@@ -38,16 +50,20 @@ const EditWarehouse = () => {
         event.target.reset();
     };
 
+    if (!foundWarehouse) {
+      return <p>Loading</p>;
+    }
+
     return (
         <>
+            {isUploaded && (
+                <IsUploaded
+                    handleUploadAgain={handleUploadAgain}
+                    btnText="Update Another Information"
+                    modalText="Warehouse Updated!"
+                />
+            )}
             <section className="warehouse">
-                {isUploaded && (
-                    <IsUploaded
-                        handleUploadAgain={handleUploadAgain}
-                        btnText="Add Another Warehouse"
-                        modalText="Warehouse Added!"
-                    />
-                )}
                 <div className="warehouse__title">
                     <Link to="/warehouses">
                         <img
@@ -69,6 +85,7 @@ const EditWarehouse = () => {
                                     type="text"
                                     className="warehouse__input"
                                     name="name"
+                                    defaultValue={foundWarehouse.name}
                                 />
                             </label>
                             <label className="warehouse__label">
@@ -78,6 +95,7 @@ const EditWarehouse = () => {
                                     type="text"
                                     className="warehouse__input"
                                     name="address"
+                                    defaultValue={foundWarehouse.address}
                                 />
                             </label>
                             <label className="warehouse__label">
@@ -87,6 +105,7 @@ const EditWarehouse = () => {
                                     type="text"
                                     className="warehouse__input"
                                     name="city"
+                                    defaultValue={foundWarehouse.city}
                                 />
                             </label>
                             <label className="warehouse__label">
@@ -96,6 +115,7 @@ const EditWarehouse = () => {
                                     type="text"
                                     className="warehouse__input"
                                     name="country"
+                                    defaultValue={foundWarehouse.country}
                                 />
                             </label>
                         </div>
@@ -108,6 +128,7 @@ const EditWarehouse = () => {
                                     type="text"
                                     className="warehouse__input"
                                     name="contactName"
+                                    defaultValue={foundWarehouse.contact.name}
                                 />
                             </label>
                             <label className="warehouse__label">
@@ -117,6 +138,7 @@ const EditWarehouse = () => {
                                     type="text"
                                     className="warehouse__input"
                                     name="position"
+                                    defaultValue={foundWarehouse.contact.position}
                                 />
                             </label>
                             <label className="warehouse__label">
@@ -126,6 +148,7 @@ const EditWarehouse = () => {
                                     type="text"
                                     className="warehouse__input"
                                     name="phoneNumber"
+                                    defaultValue={foundWarehouse.contact.phone}
                                 />
                             </label>
                             <label className="warehouse__label">
@@ -135,6 +158,7 @@ const EditWarehouse = () => {
                                     type="text"
                                     className="warehouse__input"
                                     name="email"
+                                    defaultValue={foundWarehouse.contact.email}
                                 />
                             </label>
                         </div>
