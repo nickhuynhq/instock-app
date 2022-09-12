@@ -2,10 +2,14 @@
 @use "../../styles/partials/breakpoints" as *;
 @use "../../styles/partials/colors" as *;
 
-
+.details{
+    margin-top: 1rem;
+}
 .heading {
     display: flex;
     align-items: center;
+    padding: 1rem 0rem;
+    
 
     &__edit{
         background-color: $instock-indigo;
@@ -139,8 +143,11 @@
     
     font-size: 1.75rem;
     margin-right: calc(100% - 14rem);
+    margin-top: 0rem;
+    margin-bottom: 0rem;
 
     @include tablet {
+        
         font-size: 2rem;
         margin-right: calc(100% - 22rem);
     }

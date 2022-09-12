@@ -48,9 +48,23 @@
     border-radius: 20px;
     border: 1px solid $cloud;
 
+    &--img {
+        width: 1.5rem;
+        position: absolute;
+        margin-left: 88%;
+        margin-top: 0.4rem;
+
+        @include tablet {
+            margin-left: 0;
+            margin-right: 55%;
+        }
+    }
+
     @include tablet {
         width: 12rem;
     }
+
+
 }
 
 .item__button {
@@ -90,6 +104,7 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    position: relative;
 
     @include tablet {
         flex-direction: row;
@@ -116,6 +131,7 @@
 
 .main__container {
     position: relative;
+    margin-top: 1.5rem;
 
     @include desktop {
         margin: 0rem 4rem;
@@ -123,12 +139,12 @@
 }
 
 .overlay {
-
     background-color: white;
     height: 130vh;
     margin-top: -7rem;
     padding: 1rem;
     position: fixed;
+    z-index: 3;
 
     @include tablet {
         height: 18rem;
@@ -175,6 +191,7 @@
             margin-top: -10rem;
             position: fixed;
             opacity: 50%;
+            z-index: 2;
         }
     }
 }
@@ -206,4 +223,8 @@
     &:hover {
         background-color: $graphite;
     }
+}
+
+.change-position {
+    position: relative;
 }
