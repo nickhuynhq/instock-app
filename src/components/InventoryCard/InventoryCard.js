@@ -20,7 +20,7 @@ const InventoryCard = ({
   const handleDeleteClick = (id) => {
     navigate(`/inventory/${id}/delete`);
   };
-  
+
   return (
     <div className="box">
       <Link to={`/inventory/${id}`}>
@@ -28,17 +28,17 @@ const InventoryCard = ({
           <div className="box__info-left">
             <div className="box__info-wrap">
               <span className="box__info-wrap--label">Inventory Item</span>
-              <span className="box__info-wrap--blue">
-                {itemName}
+              <div className="box__info-wrap--special">
+                <span className="box__info-wrap--special-blue">{itemName}</span>
                 <img
-                  className="box__info-wrap--arrow"
+                  className="box__info-wrap--special-arrow"
                   src={chevron}
                   alt="arrow"
                 />
-              </span>
+              </div>
             </div>
             <div className="box__info-wrap">
-              <span className="box__info-wrap--label">Category</span>
+              <span className="box__info-wrap--category">Category</span>
               <span className="box__info-wrap--span">{category}</span>
             </div>
           </div>
@@ -61,13 +61,16 @@ const InventoryCard = ({
             </div>
             <div className="box__info-wrap">
               <span className="box__info-wrap--label">Warehouse</span>
-              <span className="box__info-wrap--span">{warehouseName}</span>
+              <span className="box__info-wrap--span-warehouse">
+                {warehouseName}
+              </span>
             </div>
           </div>
         </div>
       </Link>
       <div className="icons">
         <img
+          className="icons__btn"
           alt="delete logo"
           src={deleteLogo}
           onClick={() => {
@@ -75,6 +78,7 @@ const InventoryCard = ({
           }}
         ></img>
         <img
+          className="icons__btn"
           alt="edit logo"
           src={editLogo}
           onClick={() => {

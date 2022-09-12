@@ -3,21 +3,30 @@
 
 
 .inventory{
-    margin-top: -5rem;
+    margin-top: 3rem;
     margin-left: 1rem;
     margin-right: 1rem;
     background-color: $white;
     border-radius: 4px;
     box-shadow: 1px 2px 4px $cloud;
 
+    @include tablet{
+        margin-top: -5rem;
+    }
+
+    @include desktop{
+        margin-left: 8.125rem;
+        margin-right: 8.125rem;
+    }
+
     &__header{
         @include tablet{
             display: flex;
-            gap: 13rem;
+            gap: 12rem;
         }
 
         @include desktop{
-            gap: 46rem;
+            gap: 33rem;
         }
     }
 
@@ -57,6 +66,11 @@
             width: 11.5625rem;
             height: 2.375rem;
         }
+
+        @include desktop{
+            width: 17.125rem;
+            height: 2.375rem;
+        }
     }
     &__search::placeholder{
         padding-left: 1rem;
@@ -79,6 +93,10 @@
             height: 2.375rem;
         }
         
+        @include desktop{
+            width: 8rem;
+            height: 2.375rem;
+        }
     }
 
     &__container{
@@ -137,32 +155,165 @@
 }
 
 .overlay {
-    background-color: black;
-    position: fixed;
-    z-index: 2;
-    height: 110vh;
-    width: 160vw;
-    opacity: 50%;
-    margin-top: -10rem;
-    left: -10rem;
-    
 
-    &__box {
-        background-color: white;
-        position: fixed;
-        z-index: 3;
-        height: 110vh;
-        width: 100vw;
-        opacity: 100%;
-        margin-top:-10rem;
-        overflow: hidden;
+    background-color: white;
+    height: 130vh;
+    margin-top: -6rem;
+    padding: 1rem;
+    position: fixed;
+
+    @include tablet {
+        height: 18rem;
+        width: 80%;
+        z-index: 6;
+        margin: 0 auto;
+        margin-top: 6rem;
+        border-radius: 4px;
+        margin-left: 10%;
     }
 
-    &__text {
-        z-index: 4;
-        position: fixed;
-        overflow: hidden;
+    @include desktop {
+        height: 22rem;
+        width: 60%;
+        margin-left: 20%;
+    }
+   
+    &__buttons {
+        margin-top: 50%;
+        display: flex;
+        justify-content: space-between;
+
+        @include tablet {
+            margin: 0;
+            justify-content: right;
+            gap: 1rem;
+        }
+    }
+    
+    &__x {
+        width: 2rem;
+        margin-left: 90%;
+
+        @include tablet {
+            margin-left: 95%;
+        }
+    }
+
+    &__grey {
+        @include tablet {
+            background-color: $instock-black;
+            width: 100vw;
+            height: 120vh;
+            margin-top: -10rem;
+            position: fixed;
+            opacity: 50%;
+        }
     }
 }
 
+.cancel {
+    width: 45%;
+    height: 2.25rem;
+    border-radius: 20px;
+    border: 1px solid $cloud;
+    background-color: $white;
 
+    @include tablet {
+        width: 15%;
+    }
+}
+
+.delete {
+    width: 45%;
+    height: 2.25rem;
+    border-radius: 20px;
+    border: none;
+    background-color: $red;
+    color: $white;
+
+    @include tablet {
+        width: 15%;
+    }
+
+    &:hover {
+        background-color: $graphite;
+    }
+}
+
+.group{
+    display: none;
+
+    @include tablet{
+        display: inherit;
+        display: flex;
+        margin-right: -3rem;
+        padding-left: 1rem;
+        background-color: rgba(247, 248, 249, 0.7);
+    }
+
+    @include desktop{
+        padding-left: 2.5rem;
+    }
+    &__label{
+     
+        display: flex;
+        flex-direction: row;
+        text-transform: uppercase;
+        font-size: .75rem;
+        color: $slate;
+        width: 50%;  
+        white-space: nowrap;   
+
+        &--category{
+            padding-left: 6rem;
+            @include desktop{
+                padding-left: 4rem;
+            }
+        }
+
+        &--status{
+            padding-left: 3rem;
+
+            @include tablet{
+                padding-left: 2.5rem;
+            }
+            @include desktop{
+                padding-left: 5rem;
+            }
+        }
+
+        &--qty{
+            padding-left: 4rem;
+
+            @include desktop{
+                padding-left: 6rem;
+                margin-right: -1.5rem;
+            }
+        }
+
+        &--warehouse{
+            padding-right: 3rem;
+
+            @include tablet{
+                padding-right: 4rem;
+            }
+        }
+        
+        &--actions{
+            padding-right: 3rem;
+
+            @include desktop{
+                margin-right: -4rem;
+            }
+        }
+}
+    
+
+}
+
+.arrow{
+    width: 1rem;
+    height: 1rem;
+    margin-top: 1.15rem;
+    margin-left: .25rem;
+}
