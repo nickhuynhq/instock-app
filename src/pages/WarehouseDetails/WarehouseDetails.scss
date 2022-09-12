@@ -1,0 +1,109 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/colors" as *;
+
+
+.heading {
+    display: flex;
+    align-items: center;
+
+    &__edit{
+        background-color: $instock-indigo;
+        border-radius: 50%;
+        padding: 0.25rem;
+    }
+
+    &__img{
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    &__tablet {
+        display: none;
+
+        @include tablet {
+            display: inline;
+        }
+    }
+
+    &__button--holder {
+        display: flex;
+
+        @include tablet {
+            align-items: center;
+            justify-content: center;
+            background-color: $instock-indigo;
+            border-radius: 20px;
+            width: 5rem;
+            color: $white;
+            font-size: 0.8rem;
+            padding: 0.1rem;
+        }
+    }
+}
+
+.warehouse__card {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border-top: 1px solid $cloud;
+    padding: 1rem;
+
+    @include tablet {
+        flex-direction: row;
+        
+    }
+}
+
+.warehouse__name {
+    
+    font-size: 1.75rem;
+    
+
+    @include tablet {
+        font-size: 2rem;
+        margin-right: calc(100% - 22rem);
+    }
+}
+
+.warehouse__sub {
+    display: flex;
+    justify-content: space-between;
+
+    @include tablet {
+        padding-left: 5%;
+        gap: 4rem;
+    }
+
+    @include desktop {
+        gap: 20rem;
+    }
+}
+
+.warehouse__contacts {
+    display: flex;
+    flex-direction: column;
+}
+
+.ware__label {
+    color: $slate;
+    font-size: 0.75rem;
+}
+
+.warehouse__address {
+    @include tablet {
+        border-right: 1px solid $cloud;
+        padding-right: 10%;
+        max-width: 16rem;
+    }
+
+    @include desktop {
+        max-width: 25%;
+    }
+}
+
+.ware__info {
+    @include tablet {
+        font-size: 0.8rem;
+    }
+}

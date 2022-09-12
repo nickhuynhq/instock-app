@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import InventoryCard from "../../components/InventoryCard/InventoryCard";
 import axios from "axios";
 import { fetchInventory } from "../../utils/api";
+import "./WarehouseDetails.scss"
+import Back from "../../assets/icons/arrow_back-24px.svg"
+import Edit from "../../assets/icons/edit-24px-white.svg"
 
 const WareHouseDetails = () => {
   const { warehouseId } = useParams();
@@ -29,10 +32,39 @@ const WareHouseDetails = () => {
   return (
     <main className="details">
       <section className="warehouse">
-        <h1 className="warehouse__name">{warehouse.name}</h1>
-        <div className="warehouse__details">
-          <span className="warehouse__label">Warehouse Address</span>
-          <span className="warehouse__address">{warehouse.address}</span>
+        <div className="ware__holder">
+          <div className="heading">
+            <img className="heading__img" src={Back} alt="back"></img>
+            <h1 className="warehouse__name">{warehouse.name}</h1>
+            <div className="heading__button--holder">
+              <img className="heading__edit" src={Edit} alt="edit"></img>
+              <span className="heading__tablet">Edit</span>
+            </div>
+          </div>
+          <div className="warehouse__card">
+            <div className="warehouse__address">
+              <div className="ware__column">
+                <span className="ware__label">WAREHOUSE ADDRESS:</span>
+              </div>
+              <div>
+                <span className="ware__info">{warehouse.address},&nbsp;</span>
+                <span className="ware__info">{warehouse.city},&nbsp;</span>
+                <span className="ware__info">{warehouse.country}</span>
+              </div>
+            </div>
+            <div className="warehouse__sub">
+              <div className="warehouse__contacts">
+                <span className="ware__label">CONTACT NAME:</span>
+                <span className="ware__info">{warehouse.contact.name}</span>
+                <span className="ware__info">{warehouse.contact.position}</span>
+              </div>
+              <div className="warehouse__contacts">
+                <span className="ware__label">CONTACT INFORMATION:</span>
+                <span className="ware__info">{warehouse.contact.phone}</span>
+                <span className="ware__info">{warehouse.contact.email}</span>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="inventory-list">
           {inventories.map((inventory) => {
