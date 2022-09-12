@@ -149,6 +149,7 @@ const EditWarehouse = () => {
                                     className="warehouse__input"
                                     name="phoneNumber"
                                     defaultValue={foundWarehouse.contact.phone}
+                                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                                 />
                             </label>
                             <label className="warehouse__label">
