@@ -1,7 +1,7 @@
 import React from "react";
 import ArrowBack from "../../assets/icons/arrow_back-24px.svg";
 import FormRequiredMessage from "../../components/FormRequiredMessage/FormRequiredMessage";
-
+import IsUploaded from "../../components/IsUploaded/IsUploaded";
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Link, useParams } from "react-router-dom";
@@ -15,6 +15,8 @@ import "./EditInventory.scss";
 
 
 const EditInventory = () => {
+  const [isUploaded, setIsUploaded] = useState(false);
+
   // Object Data States
   const [inventoryData, setInventoryData] = useState(null);
   const [warehousesData, setWarehousesData] = useState(null);
@@ -108,6 +110,10 @@ const EditInventory = () => {
     }
   };
 
+  const handleUploadAgain = () => {
+    setIsUploaded(!isUploaded);
+  }
+
   useEffect(() => {
     fetchInventory()
       .then((response) => {
@@ -145,6 +151,7 @@ const EditInventory = () => {
   // Render elements & components
   return (
     <div className="add-edit-inventory">
+      {isUploaded && <IsUploaded handleUploadAgain={handleUploadAgain} btnText="Update Another Information" modalText="Inventory Updated!"/>}
       <div className="add-edit-inventory-top">
         <Link to="/inventory">
           <img

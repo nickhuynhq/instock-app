@@ -23,6 +23,7 @@ const AddWarehouse = () => {
     const handleUploadAgain = () => {
       setIsUploaded(!isUploaded);
     }
+
     const handleSubmit = (event) => {
         event.preventDefault();
         // Reset validation states when submitted
@@ -181,6 +182,7 @@ const AddWarehouse = () => {
                                     type="text"
                                     className={phoneValid ? "warehouse__input" : "warehouse__input--invalid"}
                                     name="phoneNumber"
+                                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                                 />
                             </label>
                             {!phoneValid && <FormRequiredMessage />}

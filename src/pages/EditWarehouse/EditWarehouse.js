@@ -1,8 +1,8 @@
 import "../AddWarehouse/AddEditWarehouse.scss";
 import iconURL from "../../assets/icons/arrow_back-24px.svg";
 import { Link, useParams } from "react-router-dom";
-import { editWarehouse } from "../../utils/api";
-import { useState } from "react";
+import { editWarehouse, fetchWarehouses } from "../../utils/api";
+import { useEffect, useState } from "react";
 import IsUploaded from "../../components/IsUploaded/IsUploaded";
 import FormRequiredMessage from "../../components/FormRequiredMessage/FormRequiredMessage";
 
@@ -12,6 +12,18 @@ const EditWarehouse = () => {
     const handleUploadAgain = () => {
         setIsUploaded(!isUploaded);
     };
+    const [foundWarehouse, setFoundWarehouse] = useState(null);
+
+    useEffect(()=> {
+      fetchWarehouses()
+      .then((resolve) => {
+        const warehouses = resolve.data;
+        const warehouse = warehouses.find(warehouse => warehouse.id === warehouseId);
+        setFoundWarehouse(warehouse);
+      }).catch((error) => {
+        console.log(error)
+      })
+    }, [])
 
     // Form Input Validation States (warehouse)
     const [warehouseNameValid, setWarehouseNameValid] = useState(true);
@@ -84,7 +96,6 @@ const EditWarehouse = () => {
             
             editWarehouse(warehouse, warehouseId)
             .then((resolve) => {
-            console.log(resolve.data)
                 setIsUploaded(true);
             })
             .catch((error) => {
@@ -94,8 +105,19 @@ const EditWarehouse = () => {
         }
     };
 
+    if (!foundWarehouse) {
+      return <p>Loading</p>;
+    }
+
     return (
         <>
+            {isUploaded && (
+                <IsUploaded
+                    handleUploadAgain={handleUploadAgain}
+                    btnText="Update Another Information"
+                    modalText="Warehouse Updated!"
+                />
+            )}
             <section className="warehouse">
                 <div className="warehouse__title">
                     <Link to="/warehouses">
@@ -118,6 +140,7 @@ const EditWarehouse = () => {
                                     type="text"
                                     className={warehouseNameValid ? "warehouse__input" : "warehouse__input--invalid"}
                                     name="name"
+                                    defaultValue={foundWarehouse.name}
                                 />
                             </label>
                             {!warehouseNameValid && <FormRequiredMessage />}
@@ -128,6 +151,7 @@ const EditWarehouse = () => {
                                     type="text"
                                     className={addressValid ? "warehouse__input" : "warehouse__input--invalid"}
                                     name="address"
+                                    defaultValue={foundWarehouse.address}
                                 />
                             </label>
                             {!addressValid && <FormRequiredMessage />}
@@ -138,6 +162,7 @@ const EditWarehouse = () => {
                                     type="text"
                                     className={cityValid ? "warehouse__input" : "warehouse__input--invalid"}
                                     name="city"
+                                    defaultValue={foundWarehouse.city}
                                 />
                             </label>
                             {!cityValid && <FormRequiredMessage />}
@@ -148,6 +173,7 @@ const EditWarehouse = () => {
                                     type="text"
                                     className={countryValid ? "warehouse__input" : "warehouse__input--invalid"}
                                     name="country"
+                                    defaultValue={foundWarehouse.country}
                                 />
                             </label>
                             {!countryValid && <FormRequiredMessage />}
@@ -161,6 +187,7 @@ const EditWarehouse = () => {
                                     type="text"
                                     className={contactNameValid ? "warehouse__input" : "warehouse__input--invalid"}
                                     name="contactName"
+                                    defaultValue={foundWarehouse.contact.name}
                                 />
                             </label>
                             {!contactNameValid && <FormRequiredMessage />}
@@ -171,6 +198,7 @@ const EditWarehouse = () => {
                                     type="text"
                                     className={positionValid ? "warehouse__input" : "warehouse__input--invalid"}
                                     name="position"
+                                    defaultValue={foundWarehouse.contact.position}
                                 />
                             </label>
                             {!positionValid && <FormRequiredMessage />}
@@ -181,6 +209,8 @@ const EditWarehouse = () => {
                                     type="text"
                                     className={phoneValid ? "warehouse__input" : "warehouse__input--invalid"}
                                     name="phoneNumber"
+                                    defaultValue={foundWarehouse.contact.phone}
+                                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                                 />
                             </label>
                             {!phoneValid && <FormRequiredMessage />}
@@ -191,6 +221,7 @@ const EditWarehouse = () => {
                                     type="text"
                                     className={emailValid ? "warehouse__input" : "warehouse__input--invalid"}
                                     name="email"
+                                    defaultValue={foundWarehouse.contact.email}
                                 />
                             </label>
                             {!emailValid && <FormRequiredMessage />}
