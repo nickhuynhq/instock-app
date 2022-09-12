@@ -80,7 +80,7 @@ const AddInventory = () => {
       description &&
       category &&
       status &&
-      quantity >= 0
+      ((itemAvailability === "In Stock" && quantity > 0) || (itemAvailability === "Out of Stock" && quantity === 0))
     ) {
       window.scrollTo(0, 0);
       addInventoryItem(item).then(() => {

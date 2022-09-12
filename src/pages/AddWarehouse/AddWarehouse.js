@@ -181,7 +181,7 @@ const AddWarehouse = () => {
                                 {" "}
                                 Phone Number
                                 <input
-                                    type="text"
+                                    type="tel"
                                     className={phoneValid ? "warehouse__input" : "warehouse__input--invalid"}
                                     name="phoneNumber"
                                 />
