@@ -58,7 +58,7 @@
 .warehouse__name {
     
     font-size: 1.75rem;
-    
+    margin-right: calc(100% - 14rem);
 
     @include tablet {
         font-size: 2rem;
