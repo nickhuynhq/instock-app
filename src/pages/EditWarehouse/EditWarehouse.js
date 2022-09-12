@@ -35,6 +35,7 @@ const EditWarehouse = () => {
     const [positionValid, setPositionValid] = useState(true);
     const [phoneValid, setPhoneValid] = useState(true);
     const [emailValid, setEmailValid] = useState(true);
+    const phoneRGEX = /[0-9]{3}-[0-9]{3}-[0-9]{4}/;
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -79,7 +80,7 @@ const EditWarehouse = () => {
         if (!event.target.position.value){
             setPositionValid(false)
         }
-        if (!event.target.phoneNumber.value){
+        if (!event.target.phoneNumber.value || !phoneRGEX.test(event.target.phoneNumber.value)){
             setPhoneValid(false)
         }
         if (!event.target.email.value){
@@ -92,8 +93,8 @@ const EditWarehouse = () => {
             && event.target.contactName.value
             && event.target.position.value
             && event.target.phoneNumber.value
+            && phoneRGEX.test(event.target.phoneNumber.value)
             && event.target.email.value) {
-            
             editWarehouse(warehouse, warehouseId)
             .then((resolve) => {
                 setIsUploaded(true);
@@ -210,10 +211,9 @@ const EditWarehouse = () => {
                                     className={phoneValid ? "warehouse__input" : "warehouse__input--invalid"}
                                     name="phoneNumber"
                                     defaultValue={foundWarehouse.contact.phone}
-                                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                                 />
                             </label>
-                            {!phoneValid && <FormRequiredMessage />}
+                            {!phoneValid && <FormRequiredMessage type="phone"/>}
                             <label className="warehouse__label">
                                 {" "}
                                 Email
