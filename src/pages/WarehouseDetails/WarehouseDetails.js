@@ -99,7 +99,7 @@ const WareHouseDetails = () => {
             <h4>actions</h4>
           </div>
         </div>
-        <div className="inventory-list">
+        <div className="inventory-items">
           {inventories.map((inventory) => {
             if (warehouseId === inventory.warehouseID) {
               return (
@@ -109,7 +109,7 @@ const WareHouseDetails = () => {
                   itemName={inventory.itemName}
                   category={inventory.category}
                   status={inventory.status}
-                  quantity={inventory.quantity}
+                  quantity={inventory.quantity} 
                 />
               );
             }
