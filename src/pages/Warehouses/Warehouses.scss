@@ -47,12 +47,14 @@
     height: 2.25rem;
     border-radius: 20px;
     border: 1px solid $cloud;
+    cursor: pointer;
 
     &--img {
         width: 1.5rem;
         position: absolute;
         margin-left: 88%;
         margin-top: 0.4rem;
+        cursor: pointer;
 
         @include tablet {
             margin-left: 0;
@@ -73,6 +75,7 @@
     border: none;
     color: $white;
     background-color: $instock-indigo;
+    cursor: pointer;
 
     &:hover {
         background-color: $graphite;
@@ -92,6 +95,10 @@
 
 .itemcard__holder {
     border-bottom: 1px solid $cloud;
+
+    &:hover{
+        background-color: $cloud;
+    }
 
     @include tablet {
         display: flex;
@@ -151,7 +158,6 @@
         width: 80%;
         z-index: 6;
         margin: 0 auto;
-        margin-top: 6rem;
         border-radius: 4px;
         margin-left: 10%;
     }
@@ -160,6 +166,7 @@
         height: 22rem;
         width: 60%;
         margin-left: 20%;
+    
     }
    
     &__buttons {
@@ -177,6 +184,7 @@
     &__x {
         width: 2rem;
         margin-left: 90%;
+        cursor: pointer;
 
         @include tablet {
             margin-left: 95%;
@@ -203,6 +211,7 @@
     border-radius: 20px;
     border: 1px solid $cloud;
     background-color: $white;
+    cursor: pointer;
 
     @include tablet {
         width: 15%;
@@ -216,6 +225,7 @@
     border: none;
     background-color: $red;
     color: $white;
+    cursor: pointer;
 
     @include tablet {
         width: 15%;
