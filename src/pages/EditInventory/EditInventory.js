@@ -103,10 +103,10 @@ const EditInventory = () => {
     ) {
       window.scrollTo(0, 0);
       editInventoryItem(item).then(() => {
-        alert("Item has been edited");
+        setIsUploaded(true);
       });
     } else {
-      alert("Item has not been edited");
+      console.log("Item has not been edited");
     }
   };
 

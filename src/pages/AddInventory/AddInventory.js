@@ -85,11 +85,11 @@ const AddInventory = () => {
       window.scrollTo(0, 0);
       addInventoryItem(item).then(() => {
         // Add Success Module Here
-        alert("Item has been added");
+        setIsUploaded(true);
       });
     } else {
       // Add Failed Module Here
-      alert("Item has not been uploaded");
+      console.log("Item has not been edited");
     }
   };
 

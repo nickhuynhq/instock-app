@@ -19,6 +19,7 @@ const AddWarehouse = () => {
     const [positionValid, setPositionValid] = useState(true);
     const [phoneValid, setPhoneValid] = useState(true);
     const [emailValid, setEmailValid] = useState(true);
+    const phoneRGEX = /[0-9]{3}-[0-9]{3}-[0-9]{4}/;
 
     const handleUploadAgain = () => {
       setIsUploaded(!isUploaded);
@@ -67,7 +68,7 @@ const AddWarehouse = () => {
         if (!event.target.position.value){
             setPositionValid(false)
         }
-        if (!event.target.phoneNumber.value){
+        if (!event.target.phoneNumber.value || !phoneRGEX.test(event.target.phoneNumber.value)){
             setPhoneValid(false)
         }
         if (!event.target.email.value){
@@ -80,6 +81,7 @@ const AddWarehouse = () => {
             && event.target.contactName.value
             && event.target.position.value
             && event.target.phoneNumber.value
+            && phoneRGEX.test(event.target.phoneNumber.value)
             && event.target.email.value) {
                 addNewWarehouse(warehouse)
                 .then(() => {
@@ -182,10 +184,9 @@ const AddWarehouse = () => {
                                     type="text"
                                     className={phoneValid ? "warehouse__input" : "warehouse__input--invalid"}
                                     name="phoneNumber"
-                                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                                 />
                             </label>
-                            {!phoneValid && <FormRequiredMessage />}
+                            {!phoneValid && <FormRequiredMessage type="phone"/>}
                             <label className="warehouse__label">
                                 {" "}
                                 Email
