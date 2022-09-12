@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import InventoryCard from "../../components/InventoryCard/InventoryCard";
 import axios from "axios";
 import { fetchInventory } from "../../utils/api";
+import sort from "../../assets/icons/sort-24px.svg";
+import "./WarehouseDetails.scss";
 
 const WareHouseDetails = () => {
   const { warehouseId } = useParams();
@@ -33,6 +35,27 @@ const WareHouseDetails = () => {
         <div className="warehouse__details">
           <span className="warehouse__label">Warehouse Address</span>
           <span className="warehouse__address">{warehouse.address}</span>
+        </div>
+        <div className="category">
+          <div className="category__label category__label--item">
+            <h4>inventory item</h4>
+            <img src={sort} alt="arrow" />
+          </div>
+          <div className="category__label category__label--category">
+            <h4>category</h4>
+            <img src={sort} alt="arrow" />
+          </div>
+          <div className="category__label category__label--status">
+            <h4>status</h4>
+            <img src={sort} alt="arrow" />
+          </div>
+          <div className="category__label category__label--qty">
+            <h4>qty</h4>
+            <img src={sort} alt="arrow" />
+          </div>
+          <div className="category__label category__label--actions">
+            <h4>actions</h4>
+          </div>
         </div>
         <div className="inventory-list">
           {inventories.map((inventory) => {
