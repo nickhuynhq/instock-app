@@ -10,6 +10,7 @@ const AddWarehouse = () => {
     const handleUploadAgain = () => {
       setIsUploaded(!isUploaded);
     }
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const warehouse = {
@@ -25,6 +26,7 @@ const AddWarehouse = () => {
             },
         };
 
+       
         addNewWarehouse(warehouse)
             .then(() => {
                 setIsUploaded(true);
