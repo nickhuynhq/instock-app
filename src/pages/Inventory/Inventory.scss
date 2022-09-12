@@ -3,21 +3,30 @@
 
 
 .inventory{
-    margin-top: -5rem;
+    margin-top: 3rem;
     margin-left: 1rem;
     margin-right: 1rem;
     background-color: $white;
     border-radius: 4px;
     box-shadow: 1px 2px 4px $cloud;
 
+    @include tablet{
+        margin-top: -5rem;
+    }
+
+    @include desktop{
+        margin-left: 8.125rem;
+        margin-right: 8.125rem;
+    }
+
     &__header{
         @include tablet{
             display: flex;
-            gap: 13rem;
+            gap: 12rem;
         }
 
         @include desktop{
-            gap: 46rem;
+            gap: 33rem;
         }
     }
 
@@ -57,6 +66,11 @@
             width: 11.5625rem;
             height: 2.375rem;
         }
+
+        @include desktop{
+            width: 17.125rem;
+            height: 2.375rem;
+        }
     }
     &__search::placeholder{
         padding-left: 1rem;
@@ -79,6 +93,10 @@
             height: 2.375rem;
         }
         
+        @include desktop{
+            width: 8rem;
+            height: 2.375rem;
+        }
     }
 
     &__container{
@@ -222,3 +240,80 @@
     }
 }
 
+.group{
+    display: none;
+
+    @include tablet{
+        display: inherit;
+        display: flex;
+        margin-right: -3rem;
+        padding-left: 1rem;
+        background-color: rgba(247, 248, 249, 0.7);
+    }
+
+    @include desktop{
+        padding-left: 2.5rem;
+    }
+    &__label{
+     
+        display: flex;
+        flex-direction: row;
+        text-transform: uppercase;
+        font-size: .75rem;
+        color: $slate;
+        width: 50%;  
+        white-space: nowrap;   
+
+        &--category{
+            padding-left: 6rem;
+            @include desktop{
+                padding-left: 4rem;
+            }
+        }
+
+        &--status{
+            padding-left: 3rem;
+
+            @include tablet{
+                padding-left: 2.5rem;
+            }
+            @include desktop{
+                padding-left: 5rem;
+            }
+        }
+
+        &--qty{
+            padding-left: 4rem;
+
+            @include desktop{
+                padding-left: 6rem;
+                margin-right: -1.5rem;
+            }
+        }
+
+        &--warehouse{
+            padding-right: 3rem;
+
+            @include tablet{
+                padding-right: 4rem;
+            }
+        }
+        
+        &--actions{
+            padding-right: 3rem;
+
+            @include desktop{
+                margin-right: -4rem;
+            }
+        }
+}
+    
+
+}
+
+.arrow{
+    width: 1rem;
+    height: 1rem;
+    margin-top: 1.15rem;
+    margin-left: .25rem;
+}

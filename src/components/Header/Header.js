@@ -9,11 +9,11 @@ function Header() {
           <img className="header__logo" src={logo} alt="instock-logo" />
         </a>
         <div className="header__buttons">
-          <a href="/warehouses">
-            <button className="header__btn">Warehouses</button>
+          <a href="/warehouses" className="header__btn">
+            Warehouses
           </a>
-          <a href="/inventory">
-            <button className="header__btn">Inventory</button>
+          <a href="/inventory" className="header__btn">
+            Inventory
           </a>
         </div>
       </nav>

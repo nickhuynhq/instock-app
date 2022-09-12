@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import InventoryCard from "../../components/InventoryCard/InventoryCard";
-import Sort from "../../assets/icons/sort-24px.svg";
+import sort from "../../assets/icons/sort-24px.svg";
 import CloseLogo from "../../assets/icons/close-24px.svg"
 import "./Inventory.scss";
 import { useParams, useNavigate } from "react-router-dom";
@@ -20,7 +20,11 @@ const Inventory = () => {
 
   if (!inventories) {
     return <h1>Loading...</h1>;
-  } 
+  }
+
+  const handleAddClick = () => {
+    navigate("/inventory/add");
+  };
 
   const handleCancelClick = () => {
     {document.body.classList.remove("hidden__active")}
@@ -71,13 +75,39 @@ const Inventory = () => {
           <h1 className="inventory__title">Inventory</h1>
           <div className="inventory__wrap">
             <input className="inventory__search" placeholder="Search..." />
-            <button className="inventory__add">+ Add New Item</button>
+            <button className="inventory__add" onClick={handleAddClick}>
+              + Add New Item
+            </button>
+          </div>
+        </div>
+        <div className="group">
+          <div className="group__label group__label--item">
+            <h4>inventory item</h4>
+            <img className="arrow" src={sort} alt="arrow" />
+          </div>
+          <div className="group__label group__label--category">
+            <h4>category</h4>
+            <img className="arrow" src={sort} alt="arrow" />
+          </div>
+          <div className="group__label group__label--status">
+            <h4>status</h4>
+            <img className="arrow" src={sort} alt="arrow" />
+          </div>
+          <div className="group__label group__label--qty">
+            <h4>qty</h4>
+            <img className="arrow" src={sort} alt="arrow" />
+          </div>
+          <div className="group__label group__label--warehouse">
+            <h4>warehouse</h4>
+            <img className="arrow" src={sort} alt="arrow" />
+          </div>
+          <div className="group__label group__label--actions">
+            <h4>actions</h4>
           </div>
         </div>
         <div className="inventory-card">
           {inventories.map((inventory) => {
             return (
-              
               <InventoryCard
                 key={inventory.id}
                 id={inventory.id}
@@ -87,8 +117,6 @@ const Inventory = () => {
                 quantity={inventory.quantity}
                 warehouseName={inventory.warehouseName}
               />
-
-              
             );
           })}
         </div>

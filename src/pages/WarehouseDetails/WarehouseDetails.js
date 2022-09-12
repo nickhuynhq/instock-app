@@ -7,6 +7,8 @@ import { fetchInventory } from "../../utils/api";
 import "./WarehouseDetails.scss"
 import Back from "../../assets/icons/arrow_back-24px.svg"
 import Edit from "../../assets/icons/edit-24px-white.svg"
+import sort from "../../assets/icons/sort-24px.svg";
+import "./WarehouseDetails.scss";
 
 const WareHouseDetails = () => {
   const { warehouseId } = useParams();
@@ -74,6 +76,27 @@ const WareHouseDetails = () => {
                 <span className="ware__info">{warehouse.contact.email}</span>
               </div>
             </div>
+          </div>
+        </div>
+        <div className="category">
+          <div className="category__label category__label--item">
+            <h4>inventory item</h4>
+            <img className="arrow" src={sort} alt="arrow" />
+          </div>
+          <div className="category__label category__label--category">
+            <h4>category</h4>
+            <img className="arrow" src={sort} alt="arrow" />
+          </div>
+          <div className="category__label category__label--status">
+            <h4>status</h4>
+            <img className="arrow" src={sort} alt="arrow" />
+          </div>
+          <div className="category__label category__label--qty">
+            <h4>qty</h4>
+            <img className="arrow" src={sort} alt="arrow" />
+          </div>
+          <div className="category__label category__label--actions">
+            <h4>actions</h4>
           </div>
         </div>
         <div className="inventory-list">
