@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import InventoryCard from "../../components/InventoryCard/InventoryCard";
 import axios from "axios";
@@ -12,6 +12,16 @@ const WareHouseDetails = () => {
   const { warehouseId } = useParams();
   const [warehouse, setWarehouse] = useState("");
   const [inventories, setInventories] = useState("");
+
+  const navigate = useNavigate()
+
+  const handleCancelClick = () => {
+    navigate(`/warehouses`)
+  }
+
+  const handleEditClick = () => {
+    navigate(`/warehouses/${warehouseId}/edit`)
+  }
 
   useEffect(() => {
     axios
@@ -34,10 +44,10 @@ const WareHouseDetails = () => {
       <section className="warehouse">
         <div className="ware__holder">
           <div className="heading">
-            <img className="heading__img" src={Back} alt="back"></img>
+            <img className="heading__img" src={Back} alt="back" onClick={handleCancelClick}></img>
             <h1 className="warehouse__name">{warehouse.name}</h1>
             <div className="heading__button--holder">
-              <img className="heading__edit" src={Edit} alt="edit"></img>
+              <img className="heading__edit" src={Edit} alt="edit" onClick={handleEditClick}></img>
               <span className="heading__tablet">Edit</span>
             </div>
           </div>
