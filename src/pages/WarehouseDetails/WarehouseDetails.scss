@@ -62,7 +62,7 @@
     }
 
     @include desktop{
-        padding-left: 1.25rem;
+        padding-left: 2.5rem;
     }
     &__label{
      
@@ -81,7 +81,7 @@
                 padding-left: 4rem;
             }
             @include desktop{
-                padding-left: 2rem;
+                padding-left: 0rem;
             }
         }
 
@@ -92,7 +92,7 @@
                 padding-left: 1rem;
             }
             @include desktop{
-                padding-left: 0rem;
+                margin-left: -6.5rem;
             }
         }
 
@@ -105,8 +105,8 @@
             }
 
             @include desktop{
-                padding-left: 1rem;
-                margin-right: -1.5rem;
+                padding-left: 0rem;
+                margin-right: 1rem;
             }
         }
 
