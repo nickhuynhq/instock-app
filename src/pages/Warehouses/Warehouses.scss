@@ -140,8 +140,12 @@
     position: relative;
     margin-top: 1.5rem;
 
+    @include tablet {
+        margin: 0rem 3rem;
+    }
+
     @include desktop {
-        margin: 0rem 4rem;
+        margin: 0rem 8.125rem;
     }
 }
 
