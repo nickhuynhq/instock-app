@@ -173,6 +173,7 @@
 .icons {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 0 1.5rem 1.5rem 1.5rem;
 
     @include tablet {
@@ -186,6 +187,7 @@
     &__btn {
         width: 1.5rem;
         height: 1.5rem;
+        cursor: pointer;
 
         @include tablet {
             margin-top: -1rem;
@@ -199,20 +201,27 @@
 
     @include tablet {
         &:hover {
+            margin-left: -1.5rem;
+            padding-left: 2.5rem;
             background-color: $cloud;
         }
 
         align-items: center;
-        padding: 0.5rem 1rem;
+        padding: 1rem 1rem;
         display: flex;
         justify-content: space-between;
         font-size: .8rem;
     }
 
+    &-span{
+        display: flex;
+        align-items: center;
+    }
+
     &-wrap {
         min-width: 18%;
-
-
+        display: flex;
+        align-items: center;
 
         &--in-stock {
             padding-bottom: .25rem;
@@ -225,7 +234,7 @@
             padding-right: .5rem;
             padding-top: .25rem;
             border-radius: 20px;
-            margin-bottom: 1rem;
+         
 
             @include tablet {
                 margin-right: 2.5rem;
@@ -243,7 +252,6 @@
             padding-right: .5rem;
             padding-top: .25rem;
             border-radius: 20px;
-            margin-bottom: 1rem;
 
             @include tablet {
                 margin-right: 1rem;

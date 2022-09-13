@@ -5,7 +5,7 @@
 .inventory-details{
     display: flex;
     flex-direction: column;
-    margin: 0 1rem;
+    margin: 3rem 1rem;
     font-size: 11px;
     border-radius: 4px;
     background-color: $white;
@@ -15,6 +15,12 @@
 
     @include tablet{
         font-size: 12px;
+        margin: 0rem 3rem;
+    }
+
+    @include tablet{
+        font-size: 12px;
+        margin: 0rem 8.125rem;
     }
 
     &-top{
