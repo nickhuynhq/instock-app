@@ -15,8 +15,13 @@
 
     @include tablet{
         font-size: 12px;
-        margin: 0rem 6rem;
+        margin: 0rem 3rem;
     }
+
+    @include desktop{
+        margin: 0rem 8.125rem;
+    }
+
 
     &-top{
         display: flex;
