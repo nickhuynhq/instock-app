@@ -53,14 +53,18 @@
 
     &__search {
         height: 2.25rem;
-        width: 15.3125rem;
+        width: 12rem;
         border-radius: 20px;
-        margin-left: 1.5rem;
         border: 1px solid $cloud;
         margin-bottom: 1rem;
+        margin-left: 1.5rem;
         background-image: url(../../assets/icons/search-24px.svg);
         background-repeat: no-repeat;
         background-position: 95% 50%;
+
+        &-wrap{
+            padding: 1.2rem 1.3rem;
+        }
 
         @include tablet {
             width: 11.5625rem;

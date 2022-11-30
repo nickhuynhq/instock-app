@@ -97,10 +97,10 @@ const Inventory = () => {
         <div className="inventory__header">
           <h1 className="inventory__title">Inventory</h1>
           <div className="inventory__wrap">
-            <input className="inventory__search" placeholder="Search..." />
+              <input className="inventory__search" placeholder="Search..." />
             <button className="inventory__add" onClick={handleAddClick}>
               + Add New Item
-            </button>
+            </button> 
           </div>
         </div>
         <div className="group">
