@@ -51,6 +51,12 @@
 
     }
 
+    &__info-span{
+        color: #2E66E5;
+        display: flex;
+        align-items: flex-start;
+    }
+
     &__info-right {
         display: flex;
         flex-direction: column;
@@ -64,7 +70,7 @@
             justify-content: space-between;
         }
     }
-
+ 
     &__info-wrap {
         display: flex;
         flex-direction: column;
@@ -187,10 +193,11 @@
     &__btn {
         width: 1.5rem;
         height: 1.5rem;
-        cursor: pointer;
+        margin-right: .5rem;
+        cursor:pointer;
 
         @include tablet {
-            margin-top: -1rem;
+            // margin-top: -1rem;
         }
 
     }
@@ -214,8 +221,9 @@
     }
 
     &-span{
+        color: #2E66E5;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
     }
 
     &-wrap {

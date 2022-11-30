@@ -50,7 +50,7 @@ const WareHouseDetails = () => {
             <h1 className="warehouse__name">{warehouse.name}</h1>
             <div className="heading__button--holder">
               <img className="heading__edit" src={Edit} alt="edit" onClick={handleEditClick}></img>
-              <span className="heading__tablet">Edit</span>
+              <span className="heading__tablet"></span>
             </div>
           </div>
           <div className="warehouse__card">
